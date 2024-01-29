@@ -20,7 +20,7 @@ public class Attack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void OnTriggerEnter2D(Collider2D hit)
@@ -31,6 +31,10 @@ public class Attack : MonoBehaviour
             Destroy(hit.gameObject);
             pB.PlayerScoreChange(enemyHitScore);          
             Destroy(this.gameObject);
+        }
+        else if (hit.CompareTag("Wall") || hit.CompareTag("Door"))
+        {
+            Destroy (this.gameObject);
         }
     }
 }

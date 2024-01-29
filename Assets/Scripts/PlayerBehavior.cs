@@ -10,8 +10,7 @@ public class PlayerBehavior : MonoBehaviour
     int playerScore = 0;
     public GameObject playerWeapon;
     int playerGradualHealthLoss = 1;
-    int ghostDamagePlayerTakes;
-    float playerAttackCooldown = 1.0f;
+    float playerAttackCooldown = .8f;
     float lastAttackTime;
     [HideInInspector] public float playerAttackSpeed;
     int keyInPossession = 0;
@@ -19,6 +18,13 @@ public class PlayerBehavior : MonoBehaviour
     int healthPlayerGains = 100;
     int chestScore = 100;
     Transform playerTransform;
+    Vector2 lastFacingDirection = Vector2.right;
+    // Sprites for the different directions the player is moving.
+    public Sprite upSprite;
+    public Sprite downSprite;
+    public Sprite leftSprite;
+    public Sprite rightSprite;
+    private SpriteRenderer spriteRenderer;
 
     void Start()
     {        
@@ -27,24 +33,30 @@ public class PlayerBehavior : MonoBehaviour
         SetClassSpecificVariables();
         InvokeRepeating("GradualHealthDepletion", 1f, 1f);
         playerTransform = transform;
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
     {
         PlayerMovement();
 
+        
+
         if (Input.GetKeyDown(KeyCode.Space) && CanAttack())
         {
             SpawnPlayerWeapon();
         }
+
+        
     }
 
     // Depending on which class the player chose, the values for some variables differ.
     // The function below sets the variable values based on what class was chosen by the player.
     void SetClassSpecificVariables()
     {
-        playerAttackSpeed = 4.5f;
-        ghostDamagePlayerTakes = 7;
+        // Elf
+        playerAttackSpeed = 6.5f;
+        //ghostDamagePlayerTakes = 7;
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -66,7 +78,7 @@ public class PlayerBehavior : MonoBehaviour
                 break;
             case "Healing":
                 // Healing item collided with.
-                playerHealth += healthPlayerGains;
+                PlayerHealthChange(healthPlayerGains);
                 if (playerHealth >= 2000)
                 {
                     playerHealth = 2000;
@@ -108,6 +120,18 @@ public class PlayerBehavior : MonoBehaviour
         // Have it commented out because original game has quicker diagonal movement.
         //movement.Normalize();
         transform.Translate(movement * Time.deltaTime * playerMoveSpeed);
+    
+        // Run the update sprite function so the sprite changes based on the movement direction.
+        UpdateSprite();
+
+        // Variables used for the calculation of the last facing direction used in SpawnPlayerWeapon.
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
+        // Update the last facing direction whenever movement occurs.
+        if (Mathf.Abs(horizontalInput) > 0.05f || Mathf.Abs(verticalInput) > 0.05f)
+        {
+            lastFacingDirection = new Vector2(horizontalInput, verticalInput).normalized;
+        }
     }
 
     void SpawnPlayerWeapon()
@@ -120,13 +144,13 @@ public class PlayerBehavior : MonoBehaviour
         if (playerAttackRb != null)
         {
             // Get the player's movement direction to use for calculations.
-            Vector2 movementInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+            //Vector2 movementInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
             // Set the direction the attack moves in the direction the player is facing.
-            playerAttackRb.velocity = movementInput.normalized * playerAttackSpeed;
+            playerAttackRb.velocity = lastFacingDirection * playerAttackSpeed;
 
             // Calculate the angle based on the movement direction of the player.
             // Once calculated, set the player's attack to that rotation.
-            float angle = Mathf.Atan2(movementInput.x, -movementInput.y) * Mathf.Rad2Deg;
+            float angle = Mathf.Atan2(lastFacingDirection.x, -lastFacingDirection.y) * Mathf.Rad2Deg;
             playerAttack.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
         else
@@ -149,11 +173,42 @@ public class PlayerBehavior : MonoBehaviour
         Debug.Log($"Score is {playerScore}");
         //gM.ChangeScoreText(playerScore);
     }
+
+    public void PlayerHealthChange(int healthAmount)
+    {
+        playerHealth += healthAmount;
+        Debug.Log($"Lost {healthAmount}, at {playerHealth} now.");
+        //gM.ChangeHealthText(playerHealth);
+    }
     
     // Bool function that figures out if the lastAttackTime is less than or greater than the player attack cooldown.
     // If less, player can't attack. If greater, CanAttack is true and the player can attack again.
     bool CanAttack()
     {
         return Time.time - lastAttackTime >= playerAttackCooldown;
+    }
+
+     void UpdateSprite()
+    {
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
+
+        // Based on the direction of movement, set the sprite for that direction.
+        if (horizontalInput > 0.15f)
+        {
+            spriteRenderer.sprite = rightSprite;
+        }
+        else if (horizontalInput < -0.15f)
+        {
+            spriteRenderer.sprite = leftSprite;
+        }
+        else if (verticalInput > 0.15f)
+        {
+            spriteRenderer.sprite = upSprite;
+        }
+        else if (verticalInput < -0.15f)
+        {
+            spriteRenderer.sprite = downSprite;
+        }
     }
 }

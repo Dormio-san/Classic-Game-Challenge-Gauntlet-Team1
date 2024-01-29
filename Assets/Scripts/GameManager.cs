@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public GameObject playerAvatar;
     // Not sure if spawning will occur in this script or will be preset through Unity.
     // public GameObject enemyGhostSpawner;
-    // public GameObject enemyGhost;
+    public GameObject enemyGhost;
     // public GameObject chestItem;
     // public GameObject keyItem;
     // public GameObject potionItem;
@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
         Instantiate(playerSpawnAnimation, new Vector3(0, 0, 0), Quaternion.identity);
         yield return new WaitForSeconds(animationWaitTime);
         Instantiate(playerAvatar, new Vector3(0, 0, 0), Quaternion.identity);
+        Instantiate(enemyGhost, new Vector3(8, -3, 0), Quaternion.identity);
     }
 
     public void GameOver()
