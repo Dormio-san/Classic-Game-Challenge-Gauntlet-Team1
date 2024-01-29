@@ -196,11 +196,11 @@ public class PlayerBehavior : MonoBehaviour
         // Based on the direction of movement, set the sprite for that direction.
         if (horizontalInput > 0.15f)
         {
-            spriteRenderer.sprite = rightSprite;
+            spriteRenderer.flipX = horizontalInput > 0.15f;
         }
         else if (horizontalInput < -0.15f)
         {
-            spriteRenderer.sprite = leftSprite;
+            spriteRenderer.flipX = horizontalInput < -0.15f;
         }
         else if (verticalInput > 0.15f)
         {

@@ -17753,6 +17753,57 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5783768841426960233, guid: 66fcde704ab3bd343a37748b9a67522a, type: 3}
   m_PrefabInstance: {fileID: 556623931}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &573485917
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 573485919}
+  - component: {fileID: 573485918}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &573485918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 573485917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41b2caf9fb45673408788676b2b2bcb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerSpawnAnimation: {fileID: 4809421774631678094, guid: 77bea40348f5b0043a93d659613c135b, type: 3}
+  playerAvatar: {fileID: 3895951163467173566, guid: 6fff2c15ae317e44e866767eb8c37669, type: 3}
+  enemyGhost: {fileID: 3883148833601992270, guid: 7ce1acaccf8bde844a09bf3cfd088077, type: 3}
+  playerHealthText: {fileID: 0}
+  playerScoreText: {fileID: 0}
+  keyImageUI: {fileID: 0}
+  potionImageUI: {fileID: 0}
+--- !u!4 &573485919
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 573485917}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &632168606
 PrefabInstance:
   m_ObjectHideFlags: 0
