@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI playerScoreText;    
     public GameObject keyImageUI;
     public GameObject potionImageUI;
-    bool isGameOver = false;
+    //bool isGameOver = false;
 
 
     void Start()
@@ -51,17 +51,17 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        isGameOver = true;
+        //isGameOver = true;
     }
 
     public void ChangeHealthText(int currentHealth)
     {
-        //playerHealthText.text = currentHealth;
+        playerHealthText.text = "Health:" + currentHealth;
     }
 
     public void ChangeScoreText(int currentScore)
     {
-        //playerScoreText.text = currentScore;
+        playerScoreText.text = "Score:" + currentScore;
     }
 
     public void ChangeKeysUI(int numberOfKeys)
