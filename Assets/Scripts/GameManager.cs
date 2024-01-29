@@ -23,10 +23,12 @@ public class GameManager : MonoBehaviour
     public GameObject keyImageUI;
     public GameObject potionImageUI;
     //bool isGameOver = false;
+    GameObject cB;
 
 
     void Start()
     {
+        cB = GameObject.FindWithTag("MainCamera");
         StartCoroutine("SpawnLevelOne");
     }
 
@@ -47,6 +49,9 @@ public class GameManager : MonoBehaviour
         Instantiate(playerSpawnAnimation, new Vector3(0, 0, 0), Quaternion.identity);
         yield return new WaitForSeconds(animationWaitTime);
         Instantiate(playerAvatar, new Vector3(0, 0, 0), Quaternion.identity);
+        
+        cB.GetComponent<CameraBehavior>().playerSpawned = true;
+        
         Instantiate(enemyGhost, new Vector3(8, -3, 0), Quaternion.identity);
     }
 
