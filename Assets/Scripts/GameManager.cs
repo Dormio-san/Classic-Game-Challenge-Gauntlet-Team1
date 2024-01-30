@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public GameObject playerSpawnAnimation;
-    float animationWaitTime = 1.5f;
+    private float animationWaitTime = 1.5f;
     public GameObject playerAvatar;
     // Not sure if spawning will occur in this script or will be preset through Unity.
     // public GameObject enemyGhostSpawner;
@@ -22,13 +22,13 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI playerScoreText;    
     public GameObject keyImageUI;
     public GameObject potionImageUI;
-    //bool isGameOver = false;
-    GameObject cB;
+    [HideInInspector] public bool isGameOver = false;
+    private CameraBehavior cB;
 
 
     void Start()
     {
-        cB = GameObject.FindWithTag("MainCamera");
+        cB = GameObject.FindWithTag("MainCamera").GetComponent<CameraBehavior>();
         StartCoroutine("SpawnLevelOne");
     }
 
@@ -50,14 +50,15 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(animationWaitTime);
         Instantiate(playerAvatar, new Vector3(0, 0, 0), Quaternion.identity);
         
-        cB.GetComponent<CameraBehavior>().playerSpawned = true;
+        cB.playerSpawned = true;
         
         Instantiate(enemyGhost, new Vector3(8, -3, 0), Quaternion.identity);
     }
 
     public void GameOver()
     {
-        //isGameOver = true;
+        isGameOver = true;
+        Debug.Log("Game is over!");
     }
 
     public void ChangeHealthText(int currentHealth)

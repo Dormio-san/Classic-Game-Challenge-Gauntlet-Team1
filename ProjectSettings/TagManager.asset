@@ -12,6 +12,7 @@ TagManager:
   - Potion
   - Door
   - Wall
+  - Spawner
   layers:
   - Default
   - TransparentFX

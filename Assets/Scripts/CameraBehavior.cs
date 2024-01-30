@@ -5,15 +5,11 @@ using UnityEngine;
 public class CameraBehavior : MonoBehaviour
 {
     private GameObject player;
-    Transform playerTransform;
+    private Transform playerTransform;
     public float cameraSpeed = 0.125f; // Adjusts how smoothly the camera moves.
     public bool playerSpawned = false;
     public bool playerMoving = false;
-
-    void Start()
-    {
-        
-    }
+    
     void LateUpdate()
     {
         if (playerSpawned)

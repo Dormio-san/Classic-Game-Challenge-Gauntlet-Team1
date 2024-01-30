@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class EnemyBehavior : MonoBehaviour
 {
-    int enemyHealth;
-    float enemyMoveSpeed;
-    int enemyType;
-    int ghostDamage = -7;
-    GameObject player;
-    Transform playerTransform;
-    PlayerBehavior pB;
+    private int enemyHealth;
+    private float enemyMoveSpeed;
+    private int enemyType;
+    private int ghostDamage = -7;
+    private GameObject player;
+    private Transform playerTransform;
+    private PlayerBehavior pB;
 
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.Find("Player(Clone)");
+        player = GameObject.FindWithTag("Player");
         playerTransform = player.GetComponent<Transform>();
         pB = player.GetComponent<PlayerBehavior>();
         SetEnemySpecificVariables(); 
@@ -54,6 +54,7 @@ public class EnemyBehavior : MonoBehaviour
         if (smacked.CompareTag("Player"))
         {
             pB.PlayerHealthChange(ghostDamage);
+            Destroy(this.gameObject);
         }
     }
 }
