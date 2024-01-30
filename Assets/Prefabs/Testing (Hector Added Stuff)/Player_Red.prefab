@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &2341038214443725163
+--- !u!1001 &8219557123341671693
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -18,34 +18,38 @@ PrefabInstance:
     - target: {fileID: 3895951163467173553, guid: 6fff2c15ae317e44e866767eb8c37669, type: 3}
       propertyPath: upSprite
       value: 
-      objectReference: {fileID: 21300000, guid: baac70021e3517e40a10866266b14449, type: 3}
+      objectReference: {fileID: 21300000, guid: c28520599a0f0cb4d9de027797c4e5a0, type: 3}
     - target: {fileID: 3895951163467173553, guid: 6fff2c15ae317e44e866767eb8c37669, type: 3}
       propertyPath: downSprite
       value: 
-      objectReference: {fileID: 21300000, guid: 1d36fb5b1ce61764180c3b8ba07bc31d, type: 3}
+      objectReference: {fileID: 21300000, guid: 776c376dbf686af44978fbbc720871ca, type: 3}
     - target: {fileID: 3895951163467173553, guid: 6fff2c15ae317e44e866767eb8c37669, type: 3}
       propertyPath: leftSprite
       value: 
-      objectReference: {fileID: 21300000, guid: 56e192b42a49a8a439bf20064476677d, type: 3}
+      objectReference: {fileID: 21300000, guid: b923cf6e348404b498bb34d0df808962, type: 3}
+    - target: {fileID: 3895951163467173553, guid: 6fff2c15ae317e44e866767eb8c37669, type: 3}
+      propertyPath: playerWeapon
+      value: 
+      objectReference: {fileID: 2764161176728862248, guid: bcc6b04f47a43584797d92248e6283cc, type: 3}
     - target: {fileID: 3895951163467173554, guid: 6fff2c15ae317e44e866767eb8c37669, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 56e192b42a49a8a439bf20064476677d, type: 3}
+      objectReference: {fileID: 21300000, guid: b923cf6e348404b498bb34d0df808962, type: 3}
     - target: {fileID: 3895951163467173557, guid: 6fff2c15ae317e44e866767eb8c37669, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3895951163467173557, guid: 6fff2c15ae317e44e866767eb8c37669, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.036846
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3895951163467173557, guid: 6fff2c15ae317e44e866767eb8c37669, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -14.086013
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3895951163467173557, guid: 6fff2c15ae317e44e866767eb8c37669, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 12.706216
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3895951163467173557, guid: 6fff2c15ae317e44e866767eb8c37669, type: 3}
       propertyPath: m_LocalRotation.w
@@ -77,7 +81,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3895951163467173566, guid: 6fff2c15ae317e44e866767eb8c37669, type: 3}
       propertyPath: m_Name
-      value: Player_Blue Variant
+      value: Player_Red
       objectReference: {fileID: 0}
     - target: {fileID: 5233262602399972938, guid: 6fff2c15ae317e44e866767eb8c37669, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
@@ -89,22 +93,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fff2c15ae317e44e866767eb8c37669, type: 3}
---- !u!1 &1615731423282692053 stripped
+--- !u!1 &4900067399647417267 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3895951163467173566, guid: 6fff2c15ae317e44e866767eb8c37669, type: 3}
-  m_PrefabInstance: {fileID: 2341038214443725163}
+  m_PrefabInstance: {fileID: 8219557123341671693}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &717211954998132634
+--- !u!95 &8151830898087393213
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1615731423282692053}
+  m_GameObject: {fileID: 4900067399647417267}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 94f7241431459b04eb5565ff194ac61b, type: 2}
+  m_Controller: {fileID: 9100000, guid: e9c215f38a60be14391122d130b65b39, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

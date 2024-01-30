@@ -27,6 +27,10 @@ PrefabInstance:
       propertyPath: leftSprite
       value: 
       objectReference: {fileID: 21300000, guid: cbeb866093d096649a61a38661b533e6, type: 3}
+    - target: {fileID: 3895951163467173553, guid: 6fff2c15ae317e44e866767eb8c37669, type: 3}
+      propertyPath: playerWeapon
+      value: 
+      objectReference: {fileID: 6815056409529450215, guid: 559f007cfeac0314c8fbe2735ed6b9d6, type: 3}
     - target: {fileID: 3895951163467173554, guid: 6fff2c15ae317e44e866767eb8c37669, type: 3}
       propertyPath: m_Sprite
       value: 
