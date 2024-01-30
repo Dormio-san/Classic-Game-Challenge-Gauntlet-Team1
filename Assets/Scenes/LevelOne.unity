@@ -17415,6 +17415,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: chain_tiles_2 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 9191916724552786055, guid: 66fcde704ab3bd343a37748b9a67522a, type: 3}
+      propertyPath: m_TagString
+      value: Door
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66fcde704ab3bd343a37748b9a67522a, type: 3}
 --- !u!1001 &318603355
@@ -17427,6 +17431,10 @@ PrefabInstance:
     - target: {fileID: 6687162201376892649, guid: d174c7989e49a104f9ff515bc1dc4e88, type: 3}
       propertyPath: m_Name
       value: chain_tiles_0 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6687162201376892649, guid: d174c7989e49a104f9ff515bc1dc4e88, type: 3}
+      propertyPath: m_TagString
+      value: Door
       objectReference: {fileID: 0}
     - target: {fileID: 7577388497159314286, guid: d174c7989e49a104f9ff515bc1dc4e88, type: 3}
       propertyPath: m_RootOrder
@@ -17531,6 +17539,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: chain_tiles_3 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3053386675356940132, guid: d19f8ef17c6fd454ba2e4701bd80ac0b, type: 3}
+      propertyPath: m_TagString
+      value: Door
+      objectReference: {fileID: 0}
     - target: {fileID: 3193160764260359181, guid: d19f8ef17c6fd454ba2e4701bd80ac0b, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -17588,6 +17600,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: chain_tiles_0 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 6687162201376892649, guid: d174c7989e49a104f9ff515bc1dc4e88, type: 3}
+      propertyPath: m_TagString
+      value: Door
+      objectReference: {fileID: 0}
     - target: {fileID: 7577388497159314286, guid: d174c7989e49a104f9ff515bc1dc4e88, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -17644,6 +17660,10 @@ PrefabInstance:
     - target: {fileID: 6195479163284844149, guid: 019515ac69ecc27438a8c20fc6bde673, type: 3}
       propertyPath: m_Name
       value: chain_tiles_1 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6195479163284844149, guid: 019515ac69ecc27438a8c20fc6bde673, type: 3}
+      propertyPath: m_TagString
+      value: Door
       objectReference: {fileID: 0}
     - target: {fileID: 6298149507467250239, guid: 019515ac69ecc27438a8c20fc6bde673, type: 3}
       propertyPath: m_RootOrder
@@ -17818,6 +17838,10 @@ PrefabInstance:
     - target: {fileID: 6687162201376892649, guid: d174c7989e49a104f9ff515bc1dc4e88, type: 3}
       propertyPath: m_Name
       value: chain_tiles_0 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6687162201376892649, guid: d174c7989e49a104f9ff515bc1dc4e88, type: 3}
+      propertyPath: m_TagString
+      value: Door
       objectReference: {fileID: 0}
     - target: {fileID: 7577388497159314286, guid: d174c7989e49a104f9ff515bc1dc4e88, type: 3}
       propertyPath: m_RootOrder
@@ -18122,9 +18146,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 274aa1bb8d3df834585990bd03d71536, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 3895951163467173566, guid: 6fff2c15ae317e44e866767eb8c37669, type: 3}
   cameraSpeed: 0.125
   playerSpawned: 0
+  playerMoving: 0
 --- !u!1 &987234134
 GameObject:
   m_ObjectHideFlags: 0
@@ -20900,6 +20924,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: chain_tiles_1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6195479163284844149, guid: 019515ac69ecc27438a8c20fc6bde673, type: 3}
+      propertyPath: m_TagString
+      value: Door
+      objectReference: {fileID: 0}
     - target: {fileID: 6298149507467250239, guid: 019515ac69ecc27438a8c20fc6bde673, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -21001,6 +21029,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: chain_tiles_2 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 9191916724552786055, guid: 66fcde704ab3bd343a37748b9a67522a, type: 3}
+      propertyPath: m_TagString
+      value: Door
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66fcde704ab3bd343a37748b9a67522a, type: 3}
 --- !u!1001 &1527682792
@@ -21013,6 +21045,10 @@ PrefabInstance:
     - target: {fileID: 3053386675356940132, guid: d19f8ef17c6fd454ba2e4701bd80ac0b, type: 3}
       propertyPath: m_Name
       value: chain_tiles_3 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3053386675356940132, guid: d19f8ef17c6fd454ba2e4701bd80ac0b, type: 3}
+      propertyPath: m_TagString
+      value: Door
       objectReference: {fileID: 0}
     - target: {fileID: 3193160764260359181, guid: d19f8ef17c6fd454ba2e4701bd80ac0b, type: 3}
       propertyPath: m_RootOrder
@@ -21136,6 +21172,10 @@ PrefabInstance:
     - target: {fileID: 3053386675356940132, guid: d19f8ef17c6fd454ba2e4701bd80ac0b, type: 3}
       propertyPath: m_Name
       value: chain_tiles_3 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3053386675356940132, guid: d19f8ef17c6fd454ba2e4701bd80ac0b, type: 3}
+      propertyPath: m_TagString
+      value: Door
       objectReference: {fileID: 0}
     - target: {fileID: 3193160764260359181, guid: d19f8ef17c6fd454ba2e4701bd80ac0b, type: 3}
       propertyPath: m_RootOrder
@@ -21368,7 +21408,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: d73acc9a44682cf4e833516b0aea3a7e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -21449,6 +21489,10 @@ PrefabInstance:
     - target: {fileID: 9191916724552786055, guid: 66fcde704ab3bd343a37748b9a67522a, type: 3}
       propertyPath: m_Name
       value: chain_tiles_2 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9191916724552786055, guid: 66fcde704ab3bd343a37748b9a67522a, type: 3}
+      propertyPath: m_TagString
+      value: Door
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66fcde704ab3bd343a37748b9a67522a, type: 3}

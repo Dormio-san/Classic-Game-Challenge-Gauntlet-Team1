@@ -25,6 +25,7 @@ public class PlayerBehavior : MonoBehaviour
     public Sprite leftSprite;
     public Sprite rightSprite;
     private SpriteRenderer spriteRenderer;
+    private Animator playerAnimator;
 
     void Start()
     {        
@@ -34,20 +35,17 @@ public class PlayerBehavior : MonoBehaviour
         InvokeRepeating("GradualHealthDepletion", 1f, 1f);
         playerTransform = transform;
         spriteRenderer = GetComponent<SpriteRenderer>();
+        playerAnimator = GetComponent<Animator>();
     }
 
     void Update()
     {
-        PlayerMovement();
-
-        
+        PlayerMovement();        
 
         if (Input.GetKeyDown(KeyCode.Space) && CanAttack())
         {
             SpawnPlayerWeapon();
-        }
-
-        
+        }        
     }
 
     // Depending on which class the player chose, the values for some variables differ.
@@ -192,23 +190,41 @@ public class PlayerBehavior : MonoBehaviour
     {
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
+        float inputAmount = 0.1f;
 
         // Based on the direction of movement, set the sprite for that direction.
-        if (horizontalInput > 0.15f)
+        if (horizontalInput < -inputAmount)
         {
-            spriteRenderer.flipX = horizontalInput > 0.15f;
+            // Moving left.
+            SetAnimatorBools(true, false, false, false);
+            //spriteRenderer.sprite = leftSprite;
         }
-        else if (horizontalInput < -0.15f)
+        else if (horizontalInput > inputAmount)
         {
-            spriteRenderer.flipX = horizontalInput < -0.15f;
+            // Moving right.
+            SetAnimatorBools(false, true, false, false);
+            //spriteRenderer.sprite = rightSprite;
         }
-        else if (verticalInput > 0.15f)
+        else if (verticalInput > inputAmount)
         {
-            spriteRenderer.sprite = upSprite;
+            // Moving up.
+            SetAnimatorBools(false, false, true, false);
+            //spriteRenderer.sprite = upSprite;
+                       
         }
-        else if (verticalInput < -0.15f)
+        else if (verticalInput < -inputAmount)
         {
-            spriteRenderer.sprite = downSprite;
+            // Moving down.
+            SetAnimatorBools(false, false, false, true);
+            //spriteRenderer.sprite = downSprite;
         }
+    }
+
+    void SetAnimatorBools(bool movingLeft, bool movingRight, bool movingUp, bool movingDown)
+    {
+        playerAnimator.SetBool("moveLeft", movingLeft);
+        playerAnimator.SetBool("moveRight", movingRight);
+        playerAnimator.SetBool("moveUp", movingUp);
+        playerAnimator.SetBool("moveDown", movingDown);
     }
 }
