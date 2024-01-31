@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Blue_Elf_Up
+  m_Name: Blue_Elf_Right
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,11 +20,11 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: baac70021e3517e40a10866266b14449, type: 3}
+      value: {fileID: 21300000, guid: cd40d3b117c6c454da900ac6e589cc53, type: 3}
     - time: 0.3
-      value: {fileID: 21300000, guid: 99e61ca838351e94596260a37fa52d43, type: 3}
+      value: {fileID: 21300000, guid: d59ec9527be00224ea4cac864615b2bf, type: 3}
     - time: 0.6
-      value: {fileID: 21300000, guid: baac70021e3517e40a10866266b14449, type: 3}
+      value: {fileID: 21300000, guid: cd40d3b117c6c454da900ac6e589cc53, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -44,9 +44,9 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: baac70021e3517e40a10866266b14449, type: 3}
-    - {fileID: 21300000, guid: 99e61ca838351e94596260a37fa52d43, type: 3}
-    - {fileID: 21300000, guid: baac70021e3517e40a10866266b14449, type: 3}
+    - {fileID: 21300000, guid: cd40d3b117c6c454da900ac6e589cc53, type: 3}
+    - {fileID: 21300000, guid: d59ec9527be00224ea4cac864615b2bf, type: 3}
+    - {fileID: 21300000, guid: cd40d3b117c6c454da900ac6e589cc53, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
