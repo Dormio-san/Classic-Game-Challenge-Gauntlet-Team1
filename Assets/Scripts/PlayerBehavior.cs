@@ -5,49 +5,52 @@ using UnityEngine;
 public class PlayerBehavior : MonoBehaviour
 {
     private GameManager gM;
-    float playerMoveSpeed = 3;
-    int playerHealth = 2000;
-    int playerScore = 0;
+    private float playerMoveSpeed = 3;
+    private int playerHealth = 2000;
+    private int playerScore = 0;
     public GameObject playerWeapon;
-    int playerGradualHealthLoss = 1;
-    float playerAttackCooldown = .8f;
-    float lastAttackTime;
+    private int playerGradualHealthLoss = 1;
+    private float playerAttackCooldown = .8f;
+    private float lastAttackTime;
     [HideInInspector] public float playerAttackSpeed;
-    int keyInPossession = 0;
-    int potionInPossession = 0;
-    int healthPlayerGains = 100;
-    int chestScore = 100;
-    Transform playerTransform;
-    Vector2 lastFacingDirection = Vector2.right;
+    private int keyInPossession = 0;
+    private int potionInPossession = 0;
+    private int healthPlayerGains = 100;
+    private int chestScore = 100;
+    private Transform playerTransform;
+    private Vector2 lastFacingDirection = Vector2.right;
     // Sprites for the different directions the player is moving.
     public Sprite upSprite;
     public Sprite downSprite;
     public Sprite leftSprite;
     public Sprite rightSprite;
     private SpriteRenderer spriteRenderer;
+    private Animator playerAnimator;
 
     void Start()
-    {        
-        GameObject gameManagerObject = GameObject.Find("GameManager");
-        gM = gameManagerObject.GetComponent<GameManager>();
+    {
+        gM = GameObject.Find("GameManager").GetComponent<GameManager>();
         SetClassSpecificVariables();
         InvokeRepeating("GradualHealthDepletion", 1f, 1f);
         playerTransform = transform;
         spriteRenderer = GetComponent<SpriteRenderer>();
+        playerAnimator = GetComponent<Animator>();
     }
 
     void Update()
     {
-        PlayerMovement();
-
-        
+        PlayerMovement();        
 
         if (Input.GetKeyDown(KeyCode.Space) && CanAttack())
         {
             SpawnPlayerWeapon();
-        }
+        }  
 
-        
+        if (playerHealth <= 0)
+        {
+            gM.GameOver();
+            CancelInvoke();
+        }      
     }
 
     // Depending on which class the player chose, the values for some variables differ.
@@ -192,23 +195,41 @@ public class PlayerBehavior : MonoBehaviour
     {
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
+        float inputAmount = 0.1f;
 
         // Based on the direction of movement, set the sprite for that direction.
-        if (horizontalInput > 0.15f)
+        if (horizontalInput < -inputAmount)
         {
-            spriteRenderer.sprite = rightSprite;
+            // Moving left.
+            SetAnimatorBools(true, false, false, false);
+            //spriteRenderer.sprite = leftSprite;
         }
-        else if (horizontalInput < -0.15f)
+        else if (horizontalInput > inputAmount)
         {
-            spriteRenderer.sprite = leftSprite;
+            // Moving right.
+            SetAnimatorBools(false, true, false, false);
+            //spriteRenderer.sprite = rightSprite;
         }
-        else if (verticalInput > 0.15f)
+        else if (verticalInput > inputAmount)
         {
-            spriteRenderer.sprite = upSprite;
+            // Moving up.
+            SetAnimatorBools(false, false, true, false);
+            //spriteRenderer.sprite = upSprite;
+                       
         }
-        else if (verticalInput < -0.15f)
+        else if (verticalInput < -inputAmount)
         {
-            spriteRenderer.sprite = downSprite;
+            // Moving down.
+            SetAnimatorBools(false, false, false, true);
+            //spriteRenderer.sprite = downSprite;
         }
+    }
+
+    void SetAnimatorBools(bool movingLeft, bool movingRight, bool movingUp, bool movingDown)
+    {
+        playerAnimator.SetBool("moveLeft", movingLeft);
+        playerAnimator.SetBool("moveRight", movingRight);
+        playerAnimator.SetBool("moveUp", movingUp);
+        playerAnimator.SetBool("moveDown", movingDown);
     }
 }

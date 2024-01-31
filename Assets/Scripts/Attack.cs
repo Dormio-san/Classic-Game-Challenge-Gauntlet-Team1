@@ -6,14 +6,13 @@ public class Attack : MonoBehaviour
 {
     public GameObject explosionAnimation;
     private PlayerBehavior pB;
-    float weaponMoveSpeed;
-    int enemyHitScore = 10;
+    private float weaponMoveSpeed;
+    private int enemyHitScore = 10;
 
     // Start is called before the first frame update
     void Start()
     {
-        GameObject playerBehaviorObject = GameObject.Find("Player(Clone)");
-        pB = playerBehaviorObject.GetComponent<PlayerBehavior>();
+        pB = GameObject.FindWithTag("Player").GetComponent<PlayerBehavior>();
         weaponMoveSpeed = pB.playerAttackSpeed;
     }
 
@@ -34,7 +33,7 @@ public class Attack : MonoBehaviour
         }
         else if (hit.CompareTag("Wall") || hit.CompareTag("Door"))
         {
-            Destroy (this.gameObject);
+            Destroy(this.gameObject);
         }
     }
 }
