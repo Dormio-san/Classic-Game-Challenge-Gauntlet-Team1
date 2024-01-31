@@ -35,5 +35,9 @@ public class Attack : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+        else if (hit.CompareTag("Spawner"))
+        {
+            pB.PlayerScoreChange(enemyHitScore);
+        }
     }
 }

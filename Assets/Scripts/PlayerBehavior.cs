@@ -41,7 +41,7 @@ public class PlayerBehavior : MonoBehaviour
     {
         PlayerMovement();        
 
-        if (Input.GetKeyDown(KeyCode.Space) && CanAttack())
+        if (Input.GetKey(KeyCode.Space) && CanAttack())
         {
             SpawnPlayerWeapon();
         }  
@@ -50,7 +50,9 @@ public class PlayerBehavior : MonoBehaviour
         {
             gM.GameOver();
             CancelInvoke();
-        }      
+        }
+
+        Debugging();
     }
 
     // Depending on which class the player chose, the values for some variables differ.
@@ -93,14 +95,14 @@ public class PlayerBehavior : MonoBehaviour
                 // Key collided with.
                 keyInPossession += 1;
                 Debug.Log($"Keys: {keyInPossession}");
-                //gM.ChangeKeysUI(keyInPossession);
+                gM.ChangeKeysUI(keyInPossession);
                 Destroy(other.gameObject);
                 break;
             case "Potion":
                 // Potion attack item collided with.
                 potionInPossession += 1;
                 Debug.Log($"Potion: {potionInPossession}");
-                //gM.ChangePotionUI(potionInPossession);
+                gM.ChangePotionUI(potionInPossession);
                 Destroy(other.gameObject);
                 break;
             case "Door":
@@ -109,7 +111,7 @@ public class PlayerBehavior : MonoBehaviour
                 {
                     keyInPossession --;
                     Debug.Log($"Keys: {keyInPossession}");
-                    //gM.ChangeKeysUI(keyInPossession);
+                    gM.ChangeKeysUI(keyInPossession);
                     Destroy(other.gameObject);
                 }
                 break;
@@ -167,21 +169,21 @@ public class PlayerBehavior : MonoBehaviour
     {
         playerHealth -= playerGradualHealthLoss;
         Debug.Log(playerHealth);
-        //gM.ChangeHealthText(playerHealth);
+        gM.ChangeHealthText(playerHealth);
     }
 
     public void PlayerScoreChange(int scoreAmount)
     {
         playerScore += scoreAmount;
         Debug.Log($"Score is {playerScore}");
-        //gM.ChangeScoreText(playerScore);
+        gM.ChangeScoreText(playerScore);
     }
 
     public void PlayerHealthChange(int healthAmount)
     {
         playerHealth += healthAmount;
         Debug.Log($"Lost {healthAmount}, at {playerHealth} now.");
-        //gM.ChangeHealthText(playerHealth);
+        gM.ChangeHealthText(playerHealth);
     }
     
     // Bool function that figures out if the lastAttackTime is less than or greater than the player attack cooldown.
@@ -195,7 +197,7 @@ public class PlayerBehavior : MonoBehaviour
     {
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
-        float inputAmount = 0.1f;
+        float inputAmount = 0.02f;
 
         // Based on the direction of movement, set the sprite for that direction.
         if (horizontalInput < -inputAmount)
@@ -231,5 +233,74 @@ public class PlayerBehavior : MonoBehaviour
         playerAnimator.SetBool("moveRight", movingRight);
         playerAnimator.SetBool("moveUp", movingUp);
         playerAnimator.SetBool("moveDown", movingDown);
+    }
+
+    
+    // This function is used for various debugging items. Found it easier to store them in one place, so put it here.
+    void Debugging()
+    {
+        // When player presses P, add potion and update the UI.
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            potionInPossession++;
+            gM.ChangePotionUI(potionInPossession);
+
+            // Make sure I can't add too many potions.
+            if (potionInPossession >= 3)
+            {
+                potionInPossession = 3;
+            }
+
+            // Put it in console just to be sure of number I have.
+            Debug.Log("Potions: " + potionInPossession);
+        }
+        // When O is pressed, subtract 1 potion and update UI. Allows for both up and down to test the UI.
+        else if (Input.GetKeyDown(KeyCode.O))
+        {
+            potionInPossession--;
+            gM.ChangePotionUI(potionInPossession);
+
+            // Make sure I can't subtract too many potions.
+            if (potionInPossession <= 0)
+            {
+                potionInPossession = 0;
+            }
+
+            // Put it in console just to be sure of number I have.
+            Debug.Log("Potions: " + potionInPossession);
+        }
+
+        // When K is pressed, increase keys by 1 and update UI.
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            keyInPossession++;
+            gM.ChangeKeysUI(keyInPossession);
+
+            // Make sure I can't add too many keys.
+            if (keyInPossession >= 4)
+            {
+                keyInPossession = 4;
+            }
+
+            // Put it in console just to be sure of number I have.
+            Debug.Log("Keys: " + keyInPossession);
+        }
+        // When J is pressed, decrease key by 1 and update UI. Allows for both up and down to test the UI.
+        else if (Input.GetKeyDown(KeyCode.J))
+        {
+            keyInPossession--;
+            gM.ChangeKeysUI(keyInPossession);
+
+            // Make sure I can't subtract too many keys.
+            if (keyInPossession < 0)
+            {
+                keyInPossession = 0;
+            }
+
+            // Put it in console just to be sure of number I have.
+            Debug.Log("Keys: " + keyInPossession);
+        }
+
+        
     }
 }
