@@ -25,6 +25,10 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public bool isGameOver = false;
     private CameraBehavior cB;
 
+    // Temporary way of handling key image update on UI.
+    public GameObject[] keyImages;
+    public GameObject[] potionImages;
+
 
     void Start()
     {
@@ -34,10 +38,10 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        //If escape key is pressed, exit the game.
+        // If escape key is pressed, exit the game.
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            //The Unity Editor line allows for testing in the non built version as it exits play mode in the editor.
+            // The Unity Editor line allows for testing in the non built version as it exits play mode in the editor.
             UnityEditor.EditorApplication.isPlaying = false;
             Application.Quit();
             Debug.Log("Quitting game!");
@@ -63,31 +67,41 @@ public class GameManager : MonoBehaviour
 
     public void ChangeHealthText(int currentHealth)
     {
-        playerHealthText.text = "Health:" + currentHealth;
+        playerHealthText.text = "Health: " + currentHealth;
     }
 
     public void ChangeScoreText(int currentScore)
     {
-        playerScoreText.text = "Score:" + currentScore;
+        playerScoreText.text = "Score: " + currentScore;
     }
 
     public void ChangeKeysUI(int numberOfKeys)
     {
-        if (numberOfKeys == 1)
+        // Whenever numberOfKeys decreases, turn off the existing images.
+        foreach (GameObject aKeyImage in keyImages)
         {
-            keyImageUI.SetActive(true);
+            aKeyImage.SetActive(false);
         }
-        else if (numberOfKeys <= 0)
+
+        // Then, update the images to only the number of keys that the player has. With all the images disabled, the for loop will run again and activate the current numberOfKeys.
+        for (int i = 0; i < numberOfKeys && i < keyImages.Length; i++)
         {
-            keyImageUI.SetActive(false);
+            keyImages[i].SetActive(true);
         }
     }
 
     public void ChangePotionUI(int numberOfPotions)
     {
-        if (numberOfPotions <= 0)
+        // Whenever numberOfPotions decreases, turn off the existing images.
+        foreach (GameObject aPotionImage in potionImages)
         {
-            potionImageUI.SetActive(false);
+            aPotionImage.SetActive(false);
+        }
+
+        // Then, update the images to only the number of potions that the player has. With all the images disabled, the for loop will run again and activate the current numberOfPotions.
+        for (int i = 0; i < numberOfPotions && i < potionImages.Length; i++)
+        {
+            potionImages[i].SetActive(true);
         }
     }
 
