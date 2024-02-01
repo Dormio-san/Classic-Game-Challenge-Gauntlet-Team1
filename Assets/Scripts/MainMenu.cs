@@ -11,15 +11,15 @@ public class MainMenu : MonoBehaviour
     public bool valkyrie = false; // Bool for valkyrie class.
     public bool ranger = false; // Bool for ranger class.
     public bool wizard = false; // Bool for wizard class.
-    private PlayerBehavior pB;
 
-    // Start is called before the first frame update
+    private PlayerBehavior pB; // Variable to reference player script. Plan is to have blank object with player script on main menu scene so this script can access it.
+
     void Start()
     {
-        pB = GameObject.FindWithTag("Player").GetComponent<PlayerBehavior>();
+        // Set variable reference to player script.
+        pB = GameObject.FindWithTag("Player").GetComponent<PlayerBehavior>(); 
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.W))

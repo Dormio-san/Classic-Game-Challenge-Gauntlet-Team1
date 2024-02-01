@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(animationWaitTime);
         Instantiate(playerAvatar, new Vector3(0, 0, 0), Quaternion.identity);
         
-        cB.playerSpawned = true;
+        cB.playerSpawning = true;
         
         Instantiate(enemyGhost, new Vector3(8, -3, 0), Quaternion.identity);
     }
