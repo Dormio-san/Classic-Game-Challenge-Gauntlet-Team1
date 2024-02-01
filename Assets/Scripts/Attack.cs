@@ -6,14 +6,13 @@ public class Attack : MonoBehaviour
 {
     public GameObject explosionAnimation;
     private PlayerBehavior pB;
-    private float weaponMoveSpeed;
     private int enemyHitScore = 10;
+    private int damageDealt = 1;
 
     // Start is called before the first frame update
     void Start()
     {
         pB = GameObject.FindWithTag("Player").GetComponent<PlayerBehavior>();
-        weaponMoveSpeed = pB.playerAttackSpeed;
     }
 
     // Update is called once per frame
@@ -27,7 +26,7 @@ public class Attack : MonoBehaviour
         if (hit.CompareTag("Enemy"))
         {
             Instantiate(explosionAnimation, transform.position, Quaternion.identity);
-            Destroy(hit.gameObject);
+            hit.GetComponent<EnemyBehavior>().EnemyTakeDamage(damageDealt);
             pB.PlayerScoreChange(enemyHitScore);          
             Destroy(this.gameObject);
         }
