@@ -19,9 +19,8 @@ public class GameManager : MonoBehaviour
     // public GameObject potionItem;
     // public GameObject healingItem;
     public TextMeshProUGUI playerHealthText;
-    public TextMeshProUGUI playerScoreText;    
-    public GameObject keyImageUI;
-    public GameObject potionImageUI;
+    public TextMeshProUGUI playerScoreText;
+
     [HideInInspector] public bool isGameOver = false;
     private CameraBehavior cB;
 
@@ -63,6 +62,7 @@ public class GameManager : MonoBehaviour
     {
         isGameOver = true;
         Debug.Log("Game is over!");
+        ChangeScene("Engineer_Testing");
     }
 
     public void ChangeHealthText(int currentHealth)
