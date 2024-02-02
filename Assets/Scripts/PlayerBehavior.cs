@@ -9,7 +9,7 @@ public class PlayerBehavior : MonoBehaviour
     // Bools to say what class the player chose on the main menu.
     private bool warriorClass = false;
     private bool valkyrieClass = false;
-    private bool rangerClass = true;
+    private bool rangerClass = true; // change to false before done. True right now for testing.
     private bool wizardClass = false;
 
     // Class specific variables.
@@ -18,7 +18,7 @@ public class PlayerBehavior : MonoBehaviour
     private float playerAttackSpeed;
     [HideInInspector] public int ghostDamagePlayerTakes;
 
-    //Each class variables begin.
+    //*Each class variables begin.
 
     // Warrior class variables.
     private float warriorMoveSpeed = 3.5f;
@@ -44,7 +44,7 @@ public class PlayerBehavior : MonoBehaviour
     private float wizardAttackSpeed = 5.5f;
     private int ghostDamageWizardTakes = 10;
 
-    // Each class variables end.
+    // Each class variables end.*
 
     // Player variables that remain the same no matter the class.
     private int playerHealth = 2000;
@@ -60,43 +60,41 @@ public class PlayerBehavior : MonoBehaviour
     private int healthPlayerGains = 100;
     private int chestScore = 100;
 
+    // Variables used for weapon behavior.
     private Transform playerTransform;
     private Vector2 lastFacingDirection = Vector2.right;
 
-    // Variables used for player sprite and animation display.
-    public Sprite upSprite;
-    public Sprite downSprite;
-    public Sprite leftSprite;
-    public Sprite rightSprite;
-    private SpriteRenderer spriteRenderer;
-    private Animator playerAnimator;
+    private Animator playerAnimator; // Used for displaying player character animations.
 
     // Variables responsible for making potion attack work.
-    public Camera playerCamera;
-    public LayerMask enemyLayer;
+    private Camera playerCamera; // Assigned in script, so don't need to do it in the inspector.
+    public LayerMask enemyLayer; // !! Make sure to assign in the inspector!!
 
+    // Awake function to set the class specific variables to ensure that they are set before anything else occurs.
     void Awake()
     {
         SetClassSpecificVariables();
     }
     void Start()
     {
-        gM = GameObject.Find("GameManager").GetComponent<GameManager>();
+        gM = GameObject.Find("GameManager").GetComponent<GameManager>(); // Assign reference to game manager script.
 
-        InvokeRepeating("GradualHealthDepletion", 1f, 1f);
+        InvokeRepeating("GradualHealthDepletion", 1f, 1f); // One second after spawning, begin losing 1 health every second.
 
+        // Assign references to player variables.
         playerTransform = transform;
-        spriteRenderer = GetComponent<SpriteRenderer>();
         playerAnimator = GetComponent<Animator>();
         playerCamera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
 
+        // Display the UI at the start so the player can see the values they are at.
+        // For example, show score at 0 so player knows their score when they begin. Before, it only updated once a score related action occurred.
         HealthUIChange();
         ScoreUIChange();
     }
 
     void Update()
     {
-        PlayerMovement();        
+        PlayerMovement();       
 
         // If the player presses space and they can attack, the SpawnPlayerWeapon function runs.
         if (Input.GetKey(KeyCode.Space) && CanAttack())
@@ -110,13 +108,14 @@ public class PlayerBehavior : MonoBehaviour
             PotionAttack();
         }
 
+        // If the player hits 0 health or below (below in case of any unexpected situations) run the game over function and stop the invoke that was occurring.
         if (playerHealth <= 0)
         {
             gM.GameOver();
             CancelInvoke();
         }
 
-        Debugging();
+        Debugging(); // Debugging is stored in one function and run here to avoid clutter.
     }
 
     // Depending on which class the player chose, the values for some variables differ.
@@ -157,8 +156,10 @@ public class PlayerBehavior : MonoBehaviour
         }
     }
 
+    // When the player collides with another object, check the tag of the other object.
     void OnTriggerEnter2D(Collider2D other)
     {
+        // switch statement helps to reduce clutter of multiple if and else if statements.
         switch (other.tag)
         {
             case "ExitOne":
@@ -171,21 +172,23 @@ public class PlayerBehavior : MonoBehaviour
                 break;
             case "Chest":
                 // Chest item collided with.
-                PlayerScoreChange(chestScore);
-                Destroy(other.gameObject);
+                PlayerScoreChange(chestScore); // Give player score.
+                Destroy(other.gameObject); // Destroy chest.
                 break;
             case "Healing":
                 // Healing item collided with.
+                // Give the player health and check to make sure it doesn't go over 2000. Also, update UI and destroy the item.
                 PlayerHealthChange(healthPlayerGains);
                 if (playerHealth >= 2000)
                 {
                     playerHealth = 2000;
                 }
-                //HealthUIChange();
+                HealthUIChange();
                 Destroy(other.gameObject);
                 break;
             case "Key":
                 // Key collided with.
+                // Give player a key, update the UI, and destroy the item.
                 keyInPossession += 1;
                 Debug.Log($"Keys: {keyInPossession}");
                 gM.ChangeKeysUI(keyInPossession);
@@ -193,6 +196,7 @@ public class PlayerBehavior : MonoBehaviour
                 break;
             case "Potion":
                 // Potion attack item collided with.
+                // Give the player a potion, update the UI, destroy the item.
                 potionInPossession += 1;
                 Debug.Log($"Potion: {potionInPossession}");
                 gM.ChangePotionUI(potionInPossession);
@@ -200,6 +204,7 @@ public class PlayerBehavior : MonoBehaviour
                 break;
             case "Door":
                 // Door has been collided with.
+                // If player has at least 1 key, subtract a key, update the UI, and destroy the door (open it).
                 if (keyInPossession >= 1)
                 {
                     keyInPossession --;
@@ -213,14 +218,18 @@ public class PlayerBehavior : MonoBehaviour
 
     void PlayerMovement()
     {
+        // Since 2D game, use Vector2 which is only x and y movement.
         Vector2 movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        // Enabling the normalize makes sure that diagonal movement is not quicker.
-        // Have it commented out because original game has quicker diagonal movement.
+
+        // Enabling the normalize 2 lines down makes sure that diagonal movement is not quicker.
+        // Have it commented out because original game has quicker diagonal movement, and we are maintaining that mechanic.
         //movement.Normalize();
+        
+        // Player moves based on Vector2 movement above and the speed given to them.
         transform.Translate(movement * Time.deltaTime * playerMoveSpeed);
     
-        // Run the update sprite function so the sprite changes based on the movement direction.
-        UpdateSprite();
+        // Run the update sprite animation function so the sprite animation changes based on the movement direction.
+        UpdateSpriteAnimation();
 
         // Variables used for the calculation of the last facing direction used in SpawnPlayerWeapon.
         float horizontalInput = Input.GetAxis("Horizontal");
@@ -239,10 +248,9 @@ public class PlayerBehavior : MonoBehaviour
         // Get the rigidbody of the player's attack.
         Rigidbody2D playerAttackRb = playerAttack.GetComponent<Rigidbody2D>();
         
+        // As long as the playerAttack's rigidbody exits (does not equal null), run code below.
         if (playerAttackRb != null)
         {
-            // Get the player's movement direction to use for calculations.
-            //Vector2 movementInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
             // Set the direction the attack moves in the direction the player is facing.
             playerAttackRb.velocity = lastFacingDirection * playerAttackSpeed;
 
@@ -253,37 +261,40 @@ public class PlayerBehavior : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Rigidbody2D not found on player attack.");
+            Debug.LogWarning("Rigidbody2D not found on player attack."); // Debug here in case issue occurs.
         }
-        lastAttackTime = Time.time;        
+
+        lastAttackTime = Time.time; // Begin attack cooldown.       
     }
 
+    // Does as the name suggests by subtracting the depletion from the player's health. This is repeated every second and is mentioned in the start function. Also, updates UI.
     void GradualHealthDepletion()
     {
         playerHealth -= playerGradualHealthLoss;
-        Debug.Log(playerHealth);
         HealthUIChange();
     }
 
+    // Changes score and updates UI. Often called by other scripts when a score change occurs.
     public void PlayerScoreChange(int scoreAmount)
     {
         playerScore += scoreAmount;
-        Debug.Log($"Score is {playerScore}");
         ScoreUIChange();
     }
 
+    // Changes the players health and updates UI. Often called by other scripts when a health change occurs.
     public void PlayerHealthChange(int healthAmount)
     {
         playerHealth -= healthAmount;
-        Debug.Log($"Lost {healthAmount}, at {playerHealth} now.");
         HealthUIChange();
     }
 
+    // Made this a function so the code looked a bit prettier.
     public void ScoreUIChange()
     {
         gM.ChangeScoreText(playerScore);
     }
 
+    // Made this a function so the code looked a bit prettier.
     public void HealthUIChange()
     {
         gM.ChangeHealthText(playerHealth);
@@ -296,40 +307,38 @@ public class PlayerBehavior : MonoBehaviour
         return Time.time - lastAttackTime >= playerAttackCooldown;
     }
 
-     void UpdateSprite()
-    {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
-        float inputAmount = 0.02f;
 
-        // Based on the direction of movement, set the sprite for that direction.
-        if (horizontalInput < -inputAmount)
-        {
-            // Moving left.
-            SetAnimatorBools(true, false, false, false);
-            //spriteRenderer.sprite = leftSprite;
-        }
-        else if (horizontalInput > inputAmount)
-        {
-            // Moving right.
-            SetAnimatorBools(false, true, false, false);
-            //spriteRenderer.sprite = rightSprite;
-        }
-        else if (verticalInput > inputAmount)
-        {
-            // Moving up.
-            SetAnimatorBools(false, false, true, false);
-            //spriteRenderer.sprite = upSprite;
-                       
-        }
-        else if (verticalInput < -inputAmount)
-        {
-            // Moving down.
-            SetAnimatorBools(false, false, false, true);
-            //spriteRenderer.sprite = downSprite;
-        }
+    // Updates the sprite animation based on the direction the player is moving in.
+    void UpdateSpriteAnimation()
+    {
+       float horizontalInput = Input.GetAxis("Horizontal");
+       float verticalInput = Input.GetAxis("Vertical");
+       float inputAmount = 0.02f;
+
+       // Based on the direction of movement, set the sprite for that direction.
+       if (horizontalInput < -inputAmount)
+       {
+           // Moving left, set movingLeft to true and others to false.
+           SetAnimatorBools(true, false, false, false);
+       }
+       else if (horizontalInput > inputAmount)
+       {
+           // Moving right, set movingRight to true and others to false.
+           SetAnimatorBools(false, true, false, false);
+       }
+       else if (verticalInput > inputAmount)
+       {
+           // Moving up, set movingUp to true and others to false.
+           SetAnimatorBools(false, false, true, false);                       
+       }
+       else if (verticalInput < -inputAmount)
+       {
+           // Moving down, set movingDown to true and others to false.
+           SetAnimatorBools(false, false, false, true);
+       }
     }
 
+    // Updates the Animator bools. Makes code look a lot better as the alternative was listing what is in this function in each if statement above.
     void SetAnimatorBools(bool movingLeft, bool movingRight, bool movingUp, bool movingDown)
     {
         playerAnimator.SetBool("moveLeft", movingLeft);
@@ -404,11 +413,13 @@ public class PlayerBehavior : MonoBehaviour
             Debug.Log("Keys: " + keyInPossession);
         }
 
+        // When H is pressed, subtract playerHealth and update the UI. This is used to quickly test game over functionality when hitting zero health.
         if(Input.GetKeyDown(KeyCode.H))
         {
             playerHealth -= 100;
             HealthUIChange();
             
+            // Make sure I can't go into negative health.
             if (playerHealth <= 0)
             {
                 playerHealth = 0;
@@ -417,6 +428,7 @@ public class PlayerBehavior : MonoBehaviour
         }        
     }
 
+    // Sets the player class bools that are used to tell which class the player chose. This is called in the main menu script in order to set class specific values in here.
     public void SetPlayerClass(bool warriorChosen, bool valkyrieChosen, bool rangerChosen, bool wizardChosen)
     {
         warriorClass = warriorChosen;
@@ -425,25 +437,32 @@ public class PlayerBehavior : MonoBehaviour
         wizardClass = wizardChosen;
     }
 
+    // Potion attack function that destroys all enemies on the screen and awards the player with score.
+    // For this function to work, make sure the enemies are on a specific layer (found near the top right of the inspector by the tag drop down list.)
+    // Then, assign that layer to the player script in the inspector.
     void PotionAttack()
     {
+        // If the player has more than 0 potions (at least 1), run the code below.
         if (potionInPossession > 0)
         {
+            // Create a collider array that is called enemiesInView. This array checks to see if there are any colliders within the view of the camera at the enemyLayer and assigns those to the array.
             Collider2D[] enemiesInView = Physics2D.OverlapCircleAll(playerCamera.transform.position, playerCamera.orthographicSize, enemyLayer);
 
+            // For each collider found above, destroy it and update the player's score.
             foreach (Collider2D enemyCollider in enemiesInView)
             {
                 Destroy(enemyCollider.gameObject);
                 PlayerScoreChange(enemyDeadScore);
             }
 
+            // Once the above items are completed, subtract a potion from the player and update the potion UI.
             potionInPossession--;
             gM.ChangePotionUI(potionInPossession);
             Debug.Log("Potion used. Remaining potions: " + potionInPossession);
         }
         else
         {
-            Debug.Log("No potions available!");
+            Debug.Log("No potions available!"); // Here in case something goes wrong.
         }
     }    
 }

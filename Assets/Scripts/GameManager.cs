@@ -8,31 +8,38 @@ using UnityEngine.SceneManagement;
 //Debugs used in script are for testing unless otherwise specified.
 public class GameManager : MonoBehaviour
 {
-    public GameObject playerSpawnAnimation;
-    private float animationWaitTime = 1.5f;
+    // Player related variables.
     public GameObject playerAvatar;
-    // Not sure if spawning will occur in this script or will be preset through Unity.
+    public GameObject playerSpawnAnimation;
+    public TextMeshProUGUI playerHealthText;
+    public TextMeshProUGUI playerScoreText;
+
+    private float animationWaitTime = 1.5f; // Used for wait time from start of animation to spawning of player.
+    
+    /* Not sure if spawning will occur in this script or will be preset through Unity.
     // public GameObject enemyGhostSpawner;
-    public GameObject enemyGhost;
+    // public GameObject enemyGhost;
     // public GameObject chestItem;
     // public GameObject keyItem;
     // public GameObject potionItem;
     // public GameObject healingItem;
-    public TextMeshProUGUI playerHealthText;
-    public TextMeshProUGUI playerScoreText;
+     Will most likely delete the variables in this chunk.
+    */
 
-    [HideInInspector] public bool isGameOver = false;
-    private CameraBehavior cB;
+    [HideInInspector] public bool isGameOver = false; // Variables used to tell when the game is over and in turn run certain functions.
 
-    // Temporary way of handling key image update on UI.
+    private CameraBehavior cB; // Variable that is used to refer to the camera behavior script.
+
+    // Way of handling image update on UI.
     public GameObject[] keyImages;
     public GameObject[] potionImages;
 
 
     void Start()
     {
-        cB = GameObject.FindWithTag("MainCamera").GetComponent<CameraBehavior>();
-        StartCoroutine("SpawnLevelOne");
+        cB = GameObject.FindWithTag("MainCamera").GetComponent<CameraBehavior>(); // Set reference to camera behavior script.
+
+        StartCoroutine("SpawnLevelOne"); // Begin spawning for level one.
     }
 
     void Update()
@@ -49,15 +56,17 @@ public class GameManager : MonoBehaviour
 
     IEnumerator SpawnLevelOne()
     {
+        // Spawn various items for level one and set variable in camera behavior to true so it can find the player and follow them.
         Instantiate(playerSpawnAnimation, new Vector3(0, 0, 0), Quaternion.identity);
         yield return new WaitForSeconds(animationWaitTime);
         Instantiate(playerAvatar, new Vector3(0, 0, 0), Quaternion.identity);
         
         cB.playerSpawning = true;
         
-        Instantiate(enemyGhost, new Vector3(8, -3, 0), Quaternion.identity);
+        //Instantiate(enemyGhost, new Vector3(8, -3, 0), Quaternion.identity);
     }
 
+    // GameOver function stops what is occurring and goes to the end game screen.
     public void GameOver()
     {
         isGameOver = true;
@@ -65,16 +74,19 @@ public class GameManager : MonoBehaviour
         ChangeScene("Engineer_Testing");
     }
 
+    // Updates the UI for player health.
     public void ChangeHealthText(int currentHealth)
     {
         playerHealthText.text = "Health: " + currentHealth;
     }
 
+    // Updates the UI for player score.
     public void ChangeScoreText(int currentScore)
     {
         playerScoreText.text = "Score: " + currentScore;
     }
 
+    // Updates the keys UI based on the numberOfKeys the player has.
     public void ChangeKeysUI(int numberOfKeys)
     {
         // Whenever numberOfKeys decreases, turn off the existing images.
@@ -90,6 +102,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    // Updates the potion UI based on the numberOfPotions the player has.
     public void ChangePotionUI(int numberOfPotions)
     {
         // Whenever numberOfPotions decreases, turn off the existing images.
@@ -105,6 +118,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    // Changes the scene to the sceneName provided when the function is called.
     public void ChangeScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
