@@ -124,13 +124,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ghostDamagePlayerTakes: 0
   warriorWeapon: {fileID: 0}
-  warriorSprite: {fileID: 0}
   valkyrieWeapon: {fileID: 0}
-  valkyrieSprite: {fileID: 0}
   rangerWeapon: {fileID: 6953136443421410247, guid: 0ba533556b657d54c8422d5af8ee4171, type: 3}
-  rangerSprite: {fileID: 21300000, guid: 448d6ed414a87a040947f0e9ff8298e1, type: 3}
   wizardWeapon: {fileID: 0}
-  wizardSprite: {fileID: 0}
   potionInPossession: 0
   enemyLayer:
     serializedVersion: 2
