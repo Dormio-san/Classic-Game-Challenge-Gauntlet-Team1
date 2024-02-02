@@ -123,11 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &30938198 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4251347919126762655, guid: 1f4a4fcd306b9914fb047a3b6624277d, type: 3}
-  m_PrefabInstance: {fileID: 3738472304941224854}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &38124725
 GameObject:
   m_ObjectHideFlags: 0
@@ -309,9 +304,9 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 40418800}
   m_CullTransparentMesh: 1
---- !u!1 &177157769 stripped
+--- !u!1 &227345194 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 1137563389269559641, guid: 1f4a4fcd306b9914fb047a3b6624277d, type: 3}
+  m_CorrespondingSourceObject: {fileID: 227345194, guid: 1f4a4fcd306b9914fb047a3b6624277d, type: 3}
   m_PrefabInstance: {fileID: 3738472304941224854}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &238016626
@@ -466,19 +461,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 328457677}
   m_CullTransparentMesh: 1
---- !u!1 &736415322 stripped
+--- !u!1 &470288146 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 6127087367214834706, guid: 1f4a4fcd306b9914fb047a3b6624277d, type: 3}
+  m_CorrespondingSourceObject: {fileID: 470288146, guid: 1f4a4fcd306b9914fb047a3b6624277d, type: 3}
   m_PrefabInstance: {fileID: 3738472304941224854}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &853839001 stripped
+--- !u!1 &866745875 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 4135188665820390131, guid: 1f4a4fcd306b9914fb047a3b6624277d, type: 3}
+  m_CorrespondingSourceObject: {fileID: 866745875, guid: 1f4a4fcd306b9914fb047a3b6624277d, type: 3}
   m_PrefabInstance: {fileID: 3738472304941224854}
   m_PrefabAsset: {fileID: 0}
 --- !u!224 &1307091576 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3738472305957859822, guid: 1f4a4fcd306b9914fb047a3b6624277d, type: 3}
+  m_PrefabInstance: {fileID: 3738472304941224854}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1388582289 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1388582289, guid: 1f4a4fcd306b9914fb047a3b6624277d, type: 3}
   m_PrefabInstance: {fileID: 3738472304941224854}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1437788046
@@ -766,10 +766,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   titleScreenUI: {fileID: 1545900551}
   mainMenuUI: {fileID: 38124725}
-  warriorText: {fileID: 853839001}
-  valkyrieText: {fileID: 177157769}
-  rangerText: {fileID: 736415322}
-  wizardText: {fileID: 30938198}
+  warriorText: {fileID: 866745875}
+  valkyrieText: {fileID: 470288146}
+  rangerText: {fileID: 227345194}
+  wizardText: {fileID: 1388582289}
   healthText: {fileID: 3738472304941224856}
   scoreText: {fileID: 3738472304941224855}
 --- !u!4 &1507693154
@@ -1202,6 +1202,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 38124729}
     m_Modifications:
+    - target: {fileID: 3738472305957859808, guid: 1f4a4fcd306b9914fb047a3b6624277d, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3738472305957859810, guid: 1f4a4fcd306b9914fb047a3b6624277d, type: 3}
       propertyPath: m_Name
       value: LevelUI
