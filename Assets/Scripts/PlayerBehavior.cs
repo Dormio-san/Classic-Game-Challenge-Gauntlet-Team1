@@ -6,10 +6,7 @@ public class PlayerBehavior : MonoBehaviour
 {
     // Script references.
     private GameManager gM;
-<<<<<<< HEAD
     private SpawnerBehavior sB;
-=======
->>>>>>> main
 
     // Bools to say what class the player chose on the main menu.
     private bool warriorClass;
@@ -22,12 +19,9 @@ public class PlayerBehavior : MonoBehaviour
     private GameObject playerWeapon;
     private float playerAttackSpeed;
     [HideInInspector] public int ghostDamagePlayerTakes;
-<<<<<<< HEAD
     private Sprite playerSprite;
     private bool walkIntoDamage; // Determines if the character can walk into something and damage it.
     private int walkIntoDamageValue = 1; // Most likely won't change between class, so defining it here.
-=======
->>>>>>> main
 
     //*Each class variables begin.
 
@@ -36,50 +30,34 @@ public class PlayerBehavior : MonoBehaviour
     public GameObject warriorWeapon;
     private float warriorAttackSpeed = 5.5f;
     private int ghostDamageWarriorTakes = 8;
-<<<<<<< HEAD
     public Sprite warriorSprite;
-=======
->>>>>>> main
 
     // Valkyrie class variables.
     private float valkyrieMoveSpeed = 3.5f;
     public GameObject valkyrieWeapon;
     private float valkyrieAttackSpeed = 5.5f;
     private int ghostDamageValkyrieTakes = 7;
-<<<<<<< HEAD
     public Sprite valkyrieSprite;
-=======
->>>>>>> main
 
     // Ranger class variables.
     private float rangerMoveSpeed = 3.5f;
     public GameObject rangerWeapon;
     private float rangerAttackSpeed = 7.5f;
     private int ghostDamageRangerTakes = 9;
-<<<<<<< HEAD
     public Sprite rangerSprite;
-=======
->>>>>>> main
 
     // Wizard class variables.
     private float wizardMoveSpeed = 3.5f;
     public GameObject wizardWeapon;
     private float wizardAttackSpeed = 5.5f;
     private int ghostDamageWizardTakes = 10;
-<<<<<<< HEAD
     public Sprite wizardSprite;
-=======
->>>>>>> main
 
     // Each class variables end.*
 
     // Player variables that remain the same no matter the class.
     private int playerHealth = 2000;
-<<<<<<< HEAD
     public static int playerScore = 0;    
-=======
-    private int playerScore = 0;    
->>>>>>> main
     private int playerGradualHealthLoss = 1;
     private float playerAttackCooldown = .7f;
     private float lastAttackTime;
@@ -108,13 +86,9 @@ public class PlayerBehavior : MonoBehaviour
     }
     void Start()
     {
-<<<<<<< HEAD
         // Assign script references.
         gM = GameObject.Find("GameManager").GetComponent<GameManager>(); // Assign reference to game manager script.
         //sB = GameObject.FindWithTag("Spawner").GetComponent<SpawnerBehavior>(); // Assign reference to spawner behavior script.
-=======
-        gM = GameObject.Find("GameManager").GetComponent<GameManager>(); // Assign reference to game manager script.
->>>>>>> main
 
         InvokeRepeating("GradualHealthDepletion", 1f, 1f); // One second after spawning, begin losing 1 health every second.
 
@@ -172,11 +146,8 @@ public class PlayerBehavior : MonoBehaviour
             playerWeapon = warriorWeapon;
             playerAttackSpeed = warriorAttackSpeed;
             ghostDamagePlayerTakes = ghostDamageWarriorTakes;
-<<<<<<< HEAD
             playerSprite = warriorSprite;
             walkIntoDamage = true;
-=======
->>>>>>> main
         }
         else if (valkyrieClass)
         {
@@ -185,11 +156,8 @@ public class PlayerBehavior : MonoBehaviour
             playerWeapon = valkyrieWeapon;
             playerAttackSpeed = valkyrieAttackSpeed;
             ghostDamagePlayerTakes = ghostDamageValkyrieTakes;
-<<<<<<< HEAD
             playerSprite = valkyrieSprite;
             walkIntoDamage = true;
-=======
->>>>>>> main
         }
         else if (rangerClass)
         {
@@ -198,11 +166,8 @@ public class PlayerBehavior : MonoBehaviour
             playerWeapon = rangerWeapon;
             playerAttackSpeed = rangerAttackSpeed;
             ghostDamagePlayerTakes = ghostDamageRangerTakes;
-<<<<<<< HEAD
             playerSprite = rangerSprite;
             walkIntoDamage = false;
-=======
->>>>>>> main
         }
         else if (wizardClass)
         {
@@ -211,11 +176,8 @@ public class PlayerBehavior : MonoBehaviour
             playerWeapon = wizardWeapon;
             playerAttackSpeed = wizardAttackSpeed;
             ghostDamagePlayerTakes = ghostDamageWizardTakes;
-<<<<<<< HEAD
             playerSprite = wizardSprite;
             walkIntoDamage = false;
-=======
->>>>>>> main
         }
     }
 
@@ -233,13 +195,9 @@ public class PlayerBehavior : MonoBehaviour
                 break;
             case "ExitTwo":
                 // Second exit collided with.
-<<<<<<< HEAD
                 EndGameScreen.playerWon = true;
                 EndGameScreen.playerCharacter = playerSprite;
                 gM.ChangeScene("EndGameScreen");
-=======
-                gM.ChangeScene("VictoryScreen");
->>>>>>> main
                 break;
             case "Chest":
                 // Chest item collided with.
