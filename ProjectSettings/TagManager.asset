@@ -12,10 +12,7 @@ TagManager:
   - Potion
   - Door
   - Wall
-<<<<<<< HEAD
   - ExitTwo
-=======
->>>>>>> 1399fe2de5641b5b5bb3696701df6fd2c54c379e
   - Spawner
   layers:
   - Default
