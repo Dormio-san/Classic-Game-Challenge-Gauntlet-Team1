@@ -11,8 +11,8 @@ public class CameraBehavior : MonoBehaviour
     public float cameraSpeed = 0.125f; // Adjusts how smoothly the camera moves.
     
     // Bools used to determine when things occur below.
-    public bool playerSpawning = false;
-    public bool playerMoving = false;
+    public static bool playerSpawning = false;
+    public static bool playerMoving = false;
     
     void LateUpdate()
     {

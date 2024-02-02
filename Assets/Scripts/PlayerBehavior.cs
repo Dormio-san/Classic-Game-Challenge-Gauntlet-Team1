@@ -171,6 +171,8 @@ public class PlayerBehavior : MonoBehaviour
             case "ExitOne":
                 // First exit collided with.
                 gM.ChangeScene("LevelTwo");
+                CameraBehavior.playerMoving = false;
+                GameManager.levelTwo = true;
                 break;
             case "ExitTwo":
                 // Second exit collided with.
@@ -420,7 +422,7 @@ public class PlayerBehavior : MonoBehaviour
         }
 
         // When H is pressed, subtract playerHealth and update the UI. This is used to quickly test game over functionality when hitting zero health.
-        if(Input.GetKeyDown(KeyCode.H))
+        if (Input.GetKeyDown(KeyCode.H))
         {
             playerHealth -= 100;
             HealthUIChange();
@@ -431,7 +433,18 @@ public class PlayerBehavior : MonoBehaviour
                 playerHealth = 0;
                 HealthUIChange();
             }
-        }        
+        }   
+        
+        // Lil sneaky increase player speed so I can get through the level and test things quicker.
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            playerMoveSpeed++;
+        }
+        else if (Input.GetKeyDown(KeyCode.G))
+        {
+            // Guess I'm adding a way to slow down as well.
+            playerMoveSpeed--;
+        }
     }    
 
     // Potion attack function that destroys all enemies on the screen and awards the player with score.

@@ -36,11 +36,13 @@ public class GameManager : MonoBehaviour
     public GameObject[] keyImages;
     public GameObject[] potionImages;
 
+    public static bool levelTwo; // Variable to change where player spawns based on the level they are in.
+
     void Start()
     {
         cB = GameObject.FindWithTag("MainCamera").GetComponent<CameraBehavior>(); // Set reference to camera behavior script.
 
-        SpawnPlayer();
+        SpawnPlayer(); // Spawn the player.
 
         // May delete this --> //StartCoroutine("SpawnPlayer"); // Begin spawning for level one.
     }
@@ -60,10 +62,21 @@ public class GameManager : MonoBehaviour
 
     void SpawnPlayer()
     {
-        // Set the player's avatar, spawn it, and then set the camera beahvior variable to true so that it can find the player and begin following them.
+        // Set player's avatar since it applies to both if statements.
         SetPlayerAvatar();
-        Instantiate(playerAvatar, new Vector2(24.23f, -15.29f), Quaternion.identity);
-        cB.playerSpawning = true;
+
+        if (!levelTwo)
+        {
+            // Spawn player and then set the camera beahvior variable to true so that it can find the player and begin following them.            
+            Instantiate(playerAvatar, new Vector2(24.23f, -15.29f), Quaternion.identity);
+            CameraBehavior.playerSpawning = true;
+        }
+        else if (levelTwo)
+        {
+            // Spawn player and then set the camera beahvior variable to true so that it can find the player and begin following them.
+            Instantiate(playerAvatar, new Vector2(27.50f, 12.05f), Quaternion.identity);
+            CameraBehavior.playerSpawning = true;
+        }
     }
     
     /*
