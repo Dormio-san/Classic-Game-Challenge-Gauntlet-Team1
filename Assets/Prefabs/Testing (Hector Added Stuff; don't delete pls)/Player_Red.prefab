@@ -31,6 +31,14 @@ PrefabInstance:
       propertyPath: playerWeapon
       value: 
       objectReference: {fileID: 2764161176728862248, guid: bcc6b04f47a43584797d92248e6283cc, type: 3}
+    - target: {fileID: 3895951163467173553, guid: 6fff2c15ae317e44e866767eb8c37669, type: 3}
+      propertyPath: warriorAvatar
+      value: 
+      objectReference: {fileID: 4900067399647417267}
+    - target: {fileID: 3895951163467173553, guid: 6fff2c15ae317e44e866767eb8c37669, type: 3}
+      propertyPath: warriorWeapon
+      value: 
+      objectReference: {fileID: 2764161176728862248, guid: bcc6b04f47a43584797d92248e6283cc, type: 3}
     - target: {fileID: 3895951163467173554, guid: 6fff2c15ae317e44e866767eb8c37669, type: 3}
       propertyPath: m_Sprite
       value: 

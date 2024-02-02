@@ -7,10 +7,10 @@ public class PlayerBehavior : MonoBehaviour
     private GameManager gM;
 
     // Bools to say what class the player chose on the main menu.
-    private bool warriorClass = false;
-    private bool valkyrieClass = false;
-    private bool rangerClass = true; // change to false before done. True right now for testing.
-    private bool wizardClass = false;
+    private bool warriorClass;
+    private bool valkyrieClass;
+    private bool rangerClass;
+    private bool wizardClass;
 
     // Class specific variables.
     private float playerMoveSpeed;
@@ -122,6 +122,12 @@ public class PlayerBehavior : MonoBehaviour
     // The function below sets the variable values based on what class was chosen by the player.
     void SetClassSpecificVariables()
     {
+        // Set the player class variables equal to the game manager player class variables since they should be the same value.
+        warriorClass = MainMenu.warrior;
+        valkyrieClass = MainMenu.valkyrie;
+        rangerClass = MainMenu.ranger;
+        wizardClass = MainMenu.wizard;
+
         if (warriorClass)
         {
             // Warrior class, so set warrior variables as the values to be used by the player.
@@ -164,11 +170,11 @@ public class PlayerBehavior : MonoBehaviour
         {
             case "ExitOne":
                 // First exit collided with.
-                gM.ChangeScene("LevelOnePrototype");
+                gM.ChangeScene("LevelTwo");
                 break;
             case "ExitTwo":
                 // Second exit collided with.
-                gM.ChangeScene("LevelTwo");
+                gM.ChangeScene("VictoryScreen");
                 break;
             case "Chest":
                 // Chest item collided with.
@@ -426,16 +432,7 @@ public class PlayerBehavior : MonoBehaviour
                 HealthUIChange();
             }
         }        
-    }
-
-    // Sets the player class bools that are used to tell which class the player chose. This is called in the main menu script in order to set class specific values in here.
-    public void SetPlayerClass(bool warriorChosen, bool valkyrieChosen, bool rangerChosen, bool wizardChosen)
-    {
-        warriorClass = warriorChosen;
-        valkyrieClass = valkyrieChosen;
-        rangerClass = rangerChosen;
-        wizardClass = wizardChosen;
-    }
+    }    
 
     // Potion attack function that destroys all enemies on the screen and awards the player with score.
     // For this function to work, make sure the enemies are on a specific layer (found near the top right of the inspector by the tag drop down list.)

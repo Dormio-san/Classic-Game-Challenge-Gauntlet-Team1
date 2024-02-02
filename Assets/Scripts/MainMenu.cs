@@ -7,17 +7,17 @@ using TMPro;
 
 public class MainMenu : MonoBehaviour
 {
-    public bool warrior = false; // Bool for warrior class.
-    public bool valkyrie = false; // Bool for valkyrie class.
-    public bool ranger = false; // Bool for ranger class.
-    public bool wizard = false; // Bool for wizard class.
+    public static bool warrior; // Bool for warrior class.
+    public static bool valkyrie; // Bool for valkyrie class.
+    public static bool ranger; // Bool for ranger class.
+    public static bool wizard; // Bool for wizard class.
 
-    private PlayerBehavior pB; // Variable to reference player script. Plan is to have blank object with player script on main menu scene so this script can access it.
+    //private GameManager gM; // Variable to reference player script. Plan is to have blank object with player script on main menu scene so this script can access it.
 
     void Start()
     {
         // Set variable reference to player script.
-        pB = GameObject.FindWithTag("Player").GetComponent<PlayerBehavior>(); 
+        //gM = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     void Update()
@@ -43,11 +43,10 @@ public class MainMenu : MonoBehaviour
             SetClassVariable(false, false, false, true);
         }
 
-        // If Z is pressed and warrior or valkyrie or ranger or wizard are true, load Level One. 
+        // If the attack button is pressed and warrior or valkyrie or ranger or wizard are true, load Level One. 
         // As long as one of the classes has been selected when the player presses the attack button, Level One will load.
-        if (Input.GetKeyDown(KeyCode.Z) && (warrior || valkyrie || ranger || wizard))
+        if (Input.GetKeyDown(KeyCode.Space) && (warrior || valkyrie || ranger || wizard))
         {
-            pB.SetPlayerClass(warrior, valkyrie, ranger, wizard);
             SceneManager.LoadScene("LevelOne");
         }
     }

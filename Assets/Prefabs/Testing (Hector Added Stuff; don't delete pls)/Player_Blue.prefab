@@ -31,6 +31,14 @@ PrefabInstance:
       propertyPath: playerWeapon
       value: 
       objectReference: {fileID: 4675483756662341345, guid: 4fc9daf0c3a7357438485b86f6f1fcd1, type: 3}
+    - target: {fileID: 3895951163467173553, guid: 6fff2c15ae317e44e866767eb8c37669, type: 3}
+      propertyPath: valkyrieAvatar
+      value: 
+      objectReference: {fileID: 1615731423282692053}
+    - target: {fileID: 3895951163467173553, guid: 6fff2c15ae317e44e866767eb8c37669, type: 3}
+      propertyPath: valkyrieWeapon
+      value: 
+      objectReference: {fileID: 4675483756662341345, guid: 4fc9daf0c3a7357438485b86f6f1fcd1, type: 3}
     - target: {fileID: 3895951163467173554, guid: 6fff2c15ae317e44e866767eb8c37669, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -81,7 +89,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3895951163467173566, guid: 6fff2c15ae317e44e866767eb8c37669, type: 3}
       propertyPath: m_Name
-      value: Player_Blue Variant
+      value: Player_Blue
       objectReference: {fileID: 0}
     - target: {fileID: 5233262602399972938, guid: 6fff2c15ae317e44e866767eb8c37669, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x

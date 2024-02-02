@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3895951163467173553}
   - component: {fileID: 5233262602399972938}
   - component: {fileID: 1345173391}
+  - component: {fileID: 275587829}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -30,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 3895951163467173566}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6.0551157, y: -2.858767, z: 12.706216}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.7784, y: 0.7784, z: 1.5568}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -76,7 +77,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: a97b5f1bc12c72145a5cf009e5f94898, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -121,12 +122,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dc498f5d728e4f4597a431da40c694e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerWeapon: {fileID: 6953136443421410247, guid: 0ba533556b657d54c8422d5af8ee4171, type: 3}
-  playerAttackSpeed: 0
-  upSprite: {fileID: 21300000, guid: 89a53cb98510bab42b7742f8ef00d1a5, type: 3}
-  downSprite: {fileID: 21300000, guid: 2b002eb3f78b53b42b1c33fa8d3e816f, type: 3}
-  leftSprite: {fileID: 21300000, guid: a97b5f1bc12c72145a5cf009e5f94898, type: 3}
-  rightSprite: {fileID: 21300000, guid: a1a94606cab52d949bee321d96a9d80c, type: 3}
+  ghostDamagePlayerTakes: 0
+  warriorWeapon: {fileID: 0}
+  warriorAvatar: {fileID: 0}
+  valkyrieWeapon: {fileID: 0}
+  valkyrieAvatar: {fileID: 0}
+  rangerWeapon: {fileID: 6953136443421410247, guid: 0ba533556b657d54c8422d5af8ee4171, type: 3}
+  rangerAvatar: {fileID: 3895951163467173566}
+  wizardWeapon: {fileID: 0}
+  wizardAvatar: {fileID: 0}
+  potionInPossession: 0
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!61 &5233262602399972938
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -179,3 +187,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &275587829
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3895951163467173566}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 004b152f909b33f4ab0a2b5c07a43654, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

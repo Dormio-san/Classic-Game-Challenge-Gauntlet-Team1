@@ -14,19 +14,21 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI playerHealthText;
     public TextMeshProUGUI playerScoreText;
 
-    private float animationWaitTime = 1.5f; // Used for wait time from start of animation to spawning of player.
-    
-    /* Not sure if spawning will occur in this script or will be preset through Unity.
-    // public GameObject enemyGhostSpawner;
-    // public GameObject enemyGhost;
-    // public GameObject chestItem;
-    // public GameObject keyItem;
-    // public GameObject potionItem;
-    // public GameObject healingItem;
-     Will most likely delete the variables in this chunk.
-    */
+    // Bools related to the player's class that determine which avatar they use.
+    private bool warriorClass;
+    private bool valkyrieClass;
+    private bool rangerClass;
+    private bool wizardClass;
 
-    [HideInInspector] public bool isGameOver = false; // Variables used to tell when the game is over and in turn run certain functions.
+    // GameObjects for the different player classes.
+    public GameObject warriorAvatar;
+    public GameObject valkyrieAvatar;
+    public GameObject rangerAvatar;
+    public GameObject wizardAvatar;
+
+    // May delete --> //private float animationWaitTime = 1.5f; // Used for wait time from start of animation to spawning of player.
+    
+    [HideInInspector] public bool isGameOver; // Variable used to tell when the game is over and in turn run certain functions.
 
     private CameraBehavior cB; // Variable that is used to refer to the camera behavior script.
 
@@ -34,12 +36,13 @@ public class GameManager : MonoBehaviour
     public GameObject[] keyImages;
     public GameObject[] potionImages;
 
-
     void Start()
     {
         cB = GameObject.FindWithTag("MainCamera").GetComponent<CameraBehavior>(); // Set reference to camera behavior script.
 
-        StartCoroutine("SpawnLevelOne"); // Begin spawning for level one.
+        SpawnPlayer();
+
+        // May delete this --> //StartCoroutine("SpawnPlayer"); // Begin spawning for level one.
     }
 
     void Update()
@@ -51,20 +54,33 @@ public class GameManager : MonoBehaviour
             UnityEditor.EditorApplication.isPlaying = false;
             Application.Quit();
             Debug.Log("Quitting game!");
-        }        
+        } 
     }
 
-    IEnumerator SpawnLevelOne()
+
+    void SpawnPlayer()
     {
+        // Set the player's avatar, spawn it, and then set the camera beahvior variable to true so that it can find the player and begin following them.
+        SetPlayerAvatar();
+        Instantiate(playerAvatar, new Vector2(24.23f, -15.29f), Quaternion.identity);
+        cB.playerSpawning = true;
+    }
+    
+    /*
+      Commented out the Coroutine because we may not use it. If we have a spawn animation, it would be needed. Otherwise, it will be deleted.
+    IEnumerator SpawnPlayer()
+    {
+        SetPlayerAvatar();
         // Spawn various items for level one and set variable in camera behavior to true so it can find the player and follow them.
-        Instantiate(playerSpawnAnimation, new Vector3(0, 0, 0), Quaternion.identity);
-        yield return new WaitForSeconds(animationWaitTime);
-        Instantiate(playerAvatar, new Vector3(0, 0, 0), Quaternion.identity);
+        //Instantiate(playerSpawnAnimation, new Vector3(0, 0, 0), Quaternion.identity);
+        //yield return new WaitForSeconds(animationWaitTime);
+        Instantiate(playerAvatar, new Vector2(24.23f, -15.29f), Quaternion.identity);
         
         cB.playerSpawning = true;
         
         //Instantiate(enemyGhost, new Vector3(8, -3, 0), Quaternion.identity);
     }
+    */
 
     // GameOver function stops what is occurring and goes to the end game screen.
     public void GameOver()
@@ -122,5 +138,36 @@ public class GameManager : MonoBehaviour
     public void ChangeScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
+    }
+
+    // Sets the player class bools that are used to tell which class the player chose. This is called in the main menu script in order to set class specific values in here.
+    public void SetPlayerClass(bool warriorChosen, bool valkyrieChosen, bool rangerChosen, bool wizardChosen)
+    {
+        warriorClass = warriorChosen;
+        valkyrieClass = valkyrieChosen;
+        rangerClass = rangerChosen;
+        wizardClass = wizardChosen;
+    }
+
+    void SetPlayerAvatar()
+    {
+        SetPlayerClass(MainMenu.warrior, MainMenu.valkyrie, MainMenu.ranger, MainMenu.wizard);
+
+        if (warriorClass)
+        {
+            playerAvatar = warriorAvatar;
+        }
+        else if (valkyrieClass)
+        {
+            playerAvatar = valkyrieAvatar;
+        }
+        else if (rangerClass)
+        {
+            playerAvatar = rangerAvatar;
+        }
+        else if (wizardClass)
+        {
+            playerAvatar = wizardAvatar;
+        }
     }
 }
