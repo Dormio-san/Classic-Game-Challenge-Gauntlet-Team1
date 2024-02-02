@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     public GameObject rangerAvatar;
     public GameObject wizardAvatar;
 
+<<<<<<< HEAD
     // Player class text that displays at the top right when they choose their class.
     public GameObject warriorText;
     public GameObject valkyrieText;
@@ -34,6 +35,10 @@ public class GameManager : MonoBehaviour
 
     // May delete --> //private float animationWaitTime = 1.5f; // Used for wait time from start of animation to spawning of player.
 
+=======
+    // May delete --> //private float animationWaitTime = 1.5f; // Used for wait time from start of animation to spawning of player.
+    
+>>>>>>> main
     [HideInInspector] public bool isGameOver; // Variable used to tell when the game is over and in turn run certain functions.
 
     private CameraBehavior cB; // Variable that is used to refer to the camera behavior script.
@@ -106,8 +111,12 @@ public class GameManager : MonoBehaviour
     {
         isGameOver = true;
         Debug.Log("Game is over!");
+<<<<<<< HEAD
         EndGameScreen.playerLost = true;
         ChangeScene("EndGameScreen");
+=======
+        ChangeScene("Engineer_Testing");
+>>>>>>> main
     }
 
     // Updates the UI for player health.
@@ -167,11 +176,14 @@ public class GameManager : MonoBehaviour
         valkyrieClass = valkyrieChosen;
         rangerClass = rangerChosen;
         wizardClass = wizardChosen;
+<<<<<<< HEAD
 
         warriorText.SetActive(warriorClass);
         valkyrieText.SetActive(valkyrieClass);
         rangerText.SetActive(rangerClass);
         wizardText.SetActive(wizardClass);
+=======
+>>>>>>> main
     }
 
     void SetPlayerAvatar()
