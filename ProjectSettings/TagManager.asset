@@ -3,7 +3,17 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemy
+  - ExitOne
+  - Chest
+  - Healing
+  - Key
+  - Potion
+  - Door
+  - Wall
+  - ExitTwo
+  - Spawner
   layers:
   - Default
   - TransparentFX
