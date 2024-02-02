@@ -9,18 +9,26 @@ public class SpawnerBehavior : MonoBehaviour
     public GameObject enemyGhost; // The enemy ghost object that spawns.
     private int spawnerHealth = 3; // Int that gives the spawner health.
     private SpriteRenderer spriteRenderer; // Used to get the sprite renderer component of the spawner.
-    public Sprite levelTwoSprite;
-    public Sprite levelOneSprite;
+
+    // The different sprites for the spawner that are used when it takes damage.
+    private Sprite levelTwoSprite;
+    private Sprite levelOneSprite;
+
+    // Sprites for ghost spawner.
+    public Sprite ghostSpawnerLevelTwo;
+    public Sprite ghostSpawnerLevelOne;
    
 
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Spawner health: " + spawnerHealth);
+        Debug.Log("Spawner health: " + spawnerHealth); // Used for testing, but will be commented out at end.
+
+        // Assign game manager script reference and sprite renderer reference.
         gM = GameObject.Find("GameManager").GetComponent<GameManager>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-        // If the gameObject this script is attach to has the name "GhostSpawner" give it spawnerType 1.
+        // If the gameObject this script is attached to has the name "GhostSpawner" give it spawnerType 1 and Begin Spawning.
         if (this.gameObject.name == "GhostSpawner")
         {
             spawnerType = 1;
@@ -29,10 +37,9 @@ public class SpawnerBehavior : MonoBehaviour
         BeginSpawning();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        // When the game is over, cancel the invoke or spawning of enemies.
+        // When the game is over, cancel the invoke, or spawning of enemies.
         if (gM.isGameOver)
         {
             CancelInvoke();
@@ -46,6 +53,8 @@ public class SpawnerBehavior : MonoBehaviour
         if (spawnerType == 1)
         {
             InvokeRepeating("SpawnGhosts", 5.0f, 3.5f);
+            levelTwoSprite = ghostSpawnerLevelTwo;
+            levelOneSprite = ghostSpawnerLevelOne;
         }
     }
 
@@ -56,19 +65,11 @@ public class SpawnerBehavior : MonoBehaviour
         Instantiate(enemyGhost, transform.position, Quaternion.identity);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.name == "PlayerWeapon(Clone)")
-        {
-            Destroy(collision.gameObject);
-            TookDamage();
-        }
-    }
-
     // Function that will run when the spawner takes damage to check what will happen based on its health.
-    public void TookDamage()
+    // In each if statement, the spriteRenderer changes the sprite (what the spawner looks like) depending on how much health is left.
+    public void TookDamage(int damageTaken)
     {
-        spawnerHealth--;
+        spawnerHealth -= damageTaken;
 
         if (spawnerHealth == 2)
         {

@@ -10,22 +10,25 @@ public class EnemyBehavior : MonoBehaviour
     private int enemyHealth;
     private float enemyMoveSpeed;
     private int damageToPlayer; // The value of this variable is handled in player behavior because player class determines damage taken.
+    private int damageToEnemy; // This is used when the enemy hits the player.
 
     // Ghost enemy variables.
     private int ghostHealth = 1;
-    private float ghostMoveSpeed = 3.5f;  
+    private float ghostMoveSpeed = 3.5f;
+    private int damageToGhost = 1;
     
     
+    // References to the player
     private GameObject player;
     private Transform playerTransform;
     private PlayerBehavior pB;
 
+    // Reference to game manager.
     private GameManager gM;
 
     void Start()
     {
-        //enemyRenderer = GetComponent<Renderer>();
-
+        // Assign the variables above their references.
         player = GameObject.FindWithTag("Player");
         playerTransform = player.GetComponent<Transform>();
         pB = player.GetComponent<PlayerBehavior>();
@@ -39,12 +42,13 @@ public class EnemyBehavior : MonoBehaviour
         SetEnemySpecificVariables();
     }
 
-    // Update is called once per frame
+    // Run the enemy's movement function.
     void Update()
     {
         EnemyMovement();        
     }
 
+    // Do as name suggests based on conditions with the function.
     void SetEnemySpecificVariables()
     {
         if (enemyType == 1)
@@ -52,7 +56,8 @@ public class EnemyBehavior : MonoBehaviour
             // Ghost is enemy type 1, so set the variables to ghost values.
             enemyHealth = ghostHealth;
             enemyMoveSpeed = ghostMoveSpeed;
-            damageToPlayer = pB.ghostDamagePlayerTakes;
+            damageToPlayer = pB.ghostDamagePlayerTakes; // Need reference to player script here because the damage the player takes varies based on their class, which is set in the player script.
+            damageToEnemy = damageToGhost;
         }
     }
 
@@ -71,15 +76,18 @@ public class EnemyBehavior : MonoBehaviour
         }
     }
 
+    // On collision, check the collided with objects tag.
     void OnTriggerEnter2D(Collider2D smacked)
     {
+        // If enemy hits player, deal damage to the player and deal damage to the enemy.
         if (smacked.CompareTag("Player"))
         {
             pB.PlayerHealthChange(damageToPlayer);
-            Destroy(this.gameObject);
+            EnemyTakeDamage(damageToEnemy);
         }
     }
 
+    // Function that makes the enemy take damage and checks to see when the enemy should be destroyed.
     public void EnemyTakeDamage(int damageTaken)
     {
         enemyHealth -= damageTaken;
