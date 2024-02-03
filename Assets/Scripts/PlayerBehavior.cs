@@ -64,6 +64,7 @@ public class PlayerBehavior : MonoBehaviour
     private int enemyDeadScore = 10;
     public AudioSource pickupSound;
     public AudioSource hitEnemy;
+    public AudioSource usePotion;
 
     // Item related variables for key, potion, healing item, and chest.
     private int keyInPossession = 0;
@@ -203,13 +204,13 @@ public class PlayerBehavior : MonoBehaviour
                 break;
             case "Chest":
                 // Chest item collided with.
-                pickupSound.Play();
+                pickupSound.Play(); // Play sound for pickup.
                 PlayerScoreChange(chestScore); // Give player score.
                 Destroy(other.gameObject); // Destroy chest.
                 break;
             case "Key":
                 // Key collided with.
-                // Give player a key, update the UI, and destroy the item.
+                // Play a sound, give player a key, update the UI, and destroy the item.
                 pickupSound.Play();
                 keyInPossession += 1;
                 //Debug.Log($"Keys: {keyInPossession}");
@@ -218,10 +219,10 @@ public class PlayerBehavior : MonoBehaviour
                 break;
             case "Potion":
                 // Potion attack item collided with.
-                // Give the player a potion, update the UI, destroy the item.
+                // Play a sound, give the player a potion, update the UI, destroy the item.
                 pickupSound.Play();
                 potionInPossession += 1;
-                Debug.Log($"Potion: {potionInPossession}");
+                //Debug.Log($"Potion: {potionInPossession}");
                 gM.ChangePotionUI(potionInPossession);
                 Destroy(other.gameObject);
                 break;
@@ -231,13 +232,13 @@ public class PlayerBehavior : MonoBehaviour
                 if (keyInPossession >= 1)
                 {
                     keyInPossession --;
-                    Debug.Log($"Keys: {keyInPossession}");
+                    //Debug.Log($"Keys: {keyInPossession}");
                     gM.ChangeKeysUI(keyInPossession);
                     Destroy(other.gameObject);
                 }
                 break;
-            case "Spawner":
-                // If the player can walk into something and damge it, deal damage to the spawner.
+            case "GhostSpawner":
+                // If the player can walk into something and damge it, deal damage to the spawner and play sound.
                 if (walkIntoDamage)
                 {
                     PlayHitEnemy();
@@ -389,9 +390,9 @@ public class PlayerBehavior : MonoBehaviour
             gM.ChangePotionUI(potionInPossession);
 
             // Make sure I can't add too many potions.
-            if (potionInPossession >= 3)
+            if (potionInPossession >= 5)
             {
-                potionInPossession = 3;
+                potionInPossession = 5;
             }
 
             // Put it in console just to be sure of number I have.
@@ -420,9 +421,9 @@ public class PlayerBehavior : MonoBehaviour
             gM.ChangeKeysUI(keyInPossession);
 
             // Make sure I can't add too many keys.
-            if (keyInPossession >= 4)
+            if (keyInPossession >= 6)
             {
-                keyInPossession = 4;
+                keyInPossession = 6;
             }
 
             // Put it in console just to be sure of number I have.
@@ -478,6 +479,9 @@ public class PlayerBehavior : MonoBehaviour
         // If the player has more than 0 potions (at least 1), run the code below.
         if (potionInPossession > 0)
         {
+            // Playe use potion sound.
+            usePotion.Play();
+
             // Create a collider array that is called enemiesInView. This array checks to see if there are any colliders within the view of the camera at the enemyLayer and assigns those to the array.
             Collider2D[] enemiesInView = Physics2D.OverlapCircleAll(playerCamera.transform.position, playerCamera.orthographicSize, enemyLayer);
 
@@ -488,11 +492,10 @@ public class PlayerBehavior : MonoBehaviour
                 {
                     enemyCollider.GetComponent<EnemyBehavior>().EnemyTakeDamage(damagePlayerDeals);
                 }
-                else if (enemyCollider.tag == "Spawner")
+                else if (enemyCollider.tag == "GhostSpawner")
                 {
                     enemyCollider.GetComponent<SpawnerBehavior>().TookDamage(damagePlayerDeals);
                 }
-                PlayHitEnemy();
                 PlayerScoreChange(enemyDeadScore);
             }
 
@@ -508,12 +511,12 @@ public class PlayerBehavior : MonoBehaviour
             }
             HealthUIChange();
 
-            Debug.Log("Potion used. Remaining potions: " + potionInPossession);
+            //Debug.Log("Potion used. Remaining potions: " + potionInPossession);
         }
-        else
-        {
-            Debug.Log("No potions available!"); // Here in case something goes wrong.
-        }
+        //else
+        //{
+        //    Debug.Log("No potions available!"); // Here in case something goes wrong.
+        //}
     }    
 
     // Function that plays the hit enemy sound. Called in attack script so only have to assign audio on player.

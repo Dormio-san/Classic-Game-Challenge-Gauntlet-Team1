@@ -33,7 +33,7 @@ public class Attack : MonoBehaviour
             // If the arrow hits a wall or door, destroy the arrow when it collides.
             Destroy(this.gameObject);
         }
-        else if (hit.CompareTag("Spawner"))
+        else if (hit.CompareTag("GhostSpawner"))
         {
             // If the arrow hits the spawner, give the player score, run the TookDamage function in the spawner script, and destroy the arrow.
             pB.PlayHitEnemy();

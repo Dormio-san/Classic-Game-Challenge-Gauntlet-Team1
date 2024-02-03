@@ -29,7 +29,7 @@ public class SpawnerBehavior : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         // If the gameObject this script is attached to has the name "GhostSpawner" give it spawnerType 1 and Begin Spawning.
-        if (this.gameObject.name == "GhostSpawner")
+        if (this.gameObject.tag == "GhostSpawner")
         {
             spawnerType = 1;
         }
@@ -49,12 +49,12 @@ public class SpawnerBehavior : MonoBehaviour
     // Begin the process of spawning enemies by running the correct invoke function.
     void BeginSpawning()
     {
-        // If spawnerType 1 (GhostSpawner) run the SpawnGhosts function 5 seconds after the game starts and every 3.5 seconds after.
+        // If spawnerType 1 (GhostSpawner) run the SpawnGhosts function a random number between 3.5 and 6.5 seconds after the game starts and do it between 5.5 to 12.5 seconds each time after.
         if (spawnerType == 1)
         {
             levelTwoSprite = ghostSpawnerLevelTwo;
             levelOneSprite = ghostSpawnerLevelOne;
-            InvokeRepeating("SpawnGhosts", 5.0f, 3.5f);            
+            InvokeRepeating("SpawnGhosts", Random.Range(3.5f, 6.5f), Random.Range(5.5f, 12.5f));            
         }
     }
 

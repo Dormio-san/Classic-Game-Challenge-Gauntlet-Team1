@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
 {
     // Player related variables.
     public GameObject playerAvatar;
-    public GameObject playerSpawnAnimation;
+    //public GameObject playerSpawnAnimation; // Not doing.
     public TextMeshProUGUI playerHealthText;
     public TextMeshProUGUI playerScoreText;
 

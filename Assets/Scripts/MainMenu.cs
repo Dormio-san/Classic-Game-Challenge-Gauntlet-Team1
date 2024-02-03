@@ -34,6 +34,15 @@ public class MainMenu : MonoBehaviour
 
     void Update()
     {
+        // If escape key is pressed, exit the game.
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            // The Unity Editor line allows for testing in the non built version as it exits play mode in the editor.
+            UnityEditor.EditorApplication.isPlaying = false;
+            Application.Quit();
+            Debug.Log("Quitting game!");
+        }
+
         // If the title screen is true (title screen is being displayed), run the title screen function.
         if (titleScreen)
         {

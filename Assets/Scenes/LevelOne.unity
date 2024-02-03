@@ -35387,8 +35387,19 @@ MonoBehaviour:
   rangerText: {fileID: 532399861653221206}
   wizardText: {fileID: 532399861653221205}
   isGameOver: 0
-  keyImages: []
-  potionImages: []
+  keyImages:
+  - {fileID: 532399861653221214}
+  - {fileID: 532399861653221213}
+  - {fileID: 532399861653221212}
+  - {fileID: 532399861653221211}
+  - {fileID: 532399861653221210}
+  - {fileID: 532399861653221209}
+  potionImages:
+  - {fileID: 532399861653221219}
+  - {fileID: 532399861653221218}
+  - {fileID: 532399861653221217}
+  - {fileID: 532399861653221216}
+  - {fileID: 532399861653221215}
 --- !u!4 &108065965
 Transform:
   m_ObjectHideFlags: 0
@@ -35415,7 +35426,7 @@ GameObject:
   - component: {fileID: 112963969}
   - component: {fileID: 112963968}
   m_Layer: 0
-  m_Name: Audio Source
+  m_Name: LevelMusic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35433,13 +35444,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: af1e1d6455fa68748a3dc95d08180312, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.8
   m_Pitch: 1
   Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 155
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -35541,7 +35552,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 726198399437971033, guid: 11bb982404e0bff478a0eeb4104ed68e, type: 3}
       propertyPath: m_Name
-      value: 'GhostSpawner '
+      value: GhostSpawner
       objectReference: {fileID: 0}
     - target: {fileID: 726198399437971035, guid: 11bb982404e0bff478a0eeb4104ed68e, type: 3}
       propertyPath: m_RootOrder
@@ -35603,7 +35614,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 726198399437971033, guid: 11bb982404e0bff478a0eeb4104ed68e, type: 3}
       propertyPath: m_Name
-      value: 'GhostSpawner '
+      value: GhostSpawner
       objectReference: {fileID: 0}
     - target: {fileID: 726198399437971035, guid: 11bb982404e0bff478a0eeb4104ed68e, type: 3}
       propertyPath: m_RootOrder
@@ -35733,7 +35744,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 726198399437971033, guid: 11bb982404e0bff478a0eeb4104ed68e, type: 3}
       propertyPath: m_Name
-      value: 'GhostSpawner '
+      value: GhostSpawner
       objectReference: {fileID: 0}
     - target: {fileID: 726198399437971035, guid: 11bb982404e0bff478a0eeb4104ed68e, type: 3}
       propertyPath: m_RootOrder
@@ -35857,7 +35868,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 726198399437971033, guid: 11bb982404e0bff478a0eeb4104ed68e, type: 3}
       propertyPath: m_Name
-      value: 'GhostSpawner '
+      value: GhostSpawner
       objectReference: {fileID: 0}
     - target: {fileID: 726198399437971035, guid: 11bb982404e0bff478a0eeb4104ed68e, type: 3}
       propertyPath: m_RootOrder
@@ -35919,7 +35930,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 726198399437971033, guid: 11bb982404e0bff478a0eeb4104ed68e, type: 3}
       propertyPath: m_Name
-      value: 'GhostSpawner '
+      value: GhostSpawner
       objectReference: {fileID: 0}
     - target: {fileID: 726198399437971035, guid: 11bb982404e0bff478a0eeb4104ed68e, type: 3}
       propertyPath: m_RootOrder
@@ -36394,7 +36405,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 726198399437971033, guid: 11bb982404e0bff478a0eeb4104ed68e, type: 3}
       propertyPath: m_Name
-      value: 'GhostSpawner '
+      value: GhostSpawner
       objectReference: {fileID: 0}
     - target: {fileID: 726198399437971035, guid: 11bb982404e0bff478a0eeb4104ed68e, type: 3}
       propertyPath: m_RootOrder
@@ -36587,7 +36598,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 726198399437971033, guid: 11bb982404e0bff478a0eeb4104ed68e, type: 3}
       propertyPath: m_Name
-      value: 'GhostSpawner '
+      value: GhostSpawner
       objectReference: {fileID: 0}
     - target: {fileID: 726198399437971035, guid: 11bb982404e0bff478a0eeb4104ed68e, type: 3}
       propertyPath: m_RootOrder
@@ -36805,7 +36816,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 726198399437971033, guid: 11bb982404e0bff478a0eeb4104ed68e, type: 3}
       propertyPath: m_Name
-      value: 'GhostSpawner '
+      value: GhostSpawner
       objectReference: {fileID: 0}
     - target: {fileID: 726198399437971035, guid: 11bb982404e0bff478a0eeb4104ed68e, type: 3}
       propertyPath: m_RootOrder
@@ -36929,7 +36940,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 726198399437971033, guid: 11bb982404e0bff478a0eeb4104ed68e, type: 3}
       propertyPath: m_Name
-      value: 'GhostSpawner '
+      value: GhostSpawner
       objectReference: {fileID: 0}
     - target: {fileID: 726198399437971035, guid: 11bb982404e0bff478a0eeb4104ed68e, type: 3}
       propertyPath: m_RootOrder
@@ -36991,7 +37002,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 726198399437971033, guid: 11bb982404e0bff478a0eeb4104ed68e, type: 3}
       propertyPath: m_Name
-      value: 'GhostSpawner '
+      value: GhostSpawner
       objectReference: {fileID: 0}
     - target: {fileID: 726198399437971035, guid: 11bb982404e0bff478a0eeb4104ed68e, type: 3}
       propertyPath: m_RootOrder
@@ -37301,7 +37312,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 726198399437971033, guid: 11bb982404e0bff478a0eeb4104ed68e, type: 3}
       propertyPath: m_Name
-      value: 'GhostSpawner '
+      value: GhostSpawner
       objectReference: {fileID: 0}
     - target: {fileID: 726198399437971035, guid: 11bb982404e0bff478a0eeb4104ed68e, type: 3}
       propertyPath: m_RootOrder
@@ -37363,7 +37374,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 726198399437971033, guid: 11bb982404e0bff478a0eeb4104ed68e, type: 3}
       propertyPath: m_Name
-      value: 'GhostSpawner '
+      value: GhostSpawner
       objectReference: {fileID: 0}
     - target: {fileID: 726198399437971035, guid: 11bb982404e0bff478a0eeb4104ed68e, type: 3}
       propertyPath: m_RootOrder
@@ -42142,7 +42153,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 726198399437971033, guid: 11bb982404e0bff478a0eeb4104ed68e, type: 3}
       propertyPath: m_Name
-      value: 'GhostSpawner '
+      value: GhostSpawner
       objectReference: {fileID: 0}
     - target: {fileID: 726198399437971035, guid: 11bb982404e0bff478a0eeb4104ed68e, type: 3}
       propertyPath: m_RootOrder
@@ -42305,7 +42316,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 726198399437971033, guid: 11bb982404e0bff478a0eeb4104ed68e, type: 3}
       propertyPath: m_Name
-      value: 'GhostSpawner '
+      value: GhostSpawner
       objectReference: {fileID: 0}
     - target: {fileID: 726198399437971035, guid: 11bb982404e0bff478a0eeb4104ed68e, type: 3}
       propertyPath: m_RootOrder
@@ -42367,7 +42378,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 726198399437971033, guid: 11bb982404e0bff478a0eeb4104ed68e, type: 3}
       propertyPath: m_Name
-      value: 'GhostSpawner '
+      value: GhostSpawner
       objectReference: {fileID: 0}
     - target: {fileID: 726198399437971035, guid: 11bb982404e0bff478a0eeb4104ed68e, type: 3}
       propertyPath: m_RootOrder
@@ -42429,7 +42440,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 726198399437971033, guid: 11bb982404e0bff478a0eeb4104ed68e, type: 3}
       propertyPath: m_Name
-      value: 'GhostSpawner '
+      value: GhostSpawner
       objectReference: {fileID: 0}
     - target: {fileID: 726198399437971035, guid: 11bb982404e0bff478a0eeb4104ed68e, type: 3}
       propertyPath: m_RootOrder
@@ -42785,7 +42796,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 726198399437971033, guid: 11bb982404e0bff478a0eeb4104ed68e, type: 3}
       propertyPath: m_Name
-      value: 'GhostSpawner '
+      value: GhostSpawner
       objectReference: {fileID: 0}
     - target: {fileID: 726198399437971035, guid: 11bb982404e0bff478a0eeb4104ed68e, type: 3}
       propertyPath: m_RootOrder
@@ -42927,7 +42938,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 726198399437971033, guid: 11bb982404e0bff478a0eeb4104ed68e, type: 3}
       propertyPath: m_Name
-      value: 'GhostSpawner '
+      value: GhostSpawner
       objectReference: {fileID: 0}
     - target: {fileID: 726198399437971035, guid: 11bb982404e0bff478a0eeb4104ed68e, type: 3}
       propertyPath: m_RootOrder
@@ -43091,7 +43102,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 726198399437971033, guid: 11bb982404e0bff478a0eeb4104ed68e, type: 3}
       propertyPath: m_Name
-      value: 'GhostSpawner '
+      value: GhostSpawner
       objectReference: {fileID: 0}
     - target: {fileID: 726198399437971035, guid: 11bb982404e0bff478a0eeb4104ed68e, type: 3}
       propertyPath: m_RootOrder
@@ -43215,7 +43226,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 726198399437971033, guid: 11bb982404e0bff478a0eeb4104ed68e, type: 3}
       propertyPath: m_Name
-      value: 'GhostSpawner '
+      value: GhostSpawner
       objectReference: {fileID: 0}
     - target: {fileID: 726198399437971035, guid: 11bb982404e0bff478a0eeb4104ed68e, type: 3}
       propertyPath: m_RootOrder
@@ -43541,7 +43552,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 726198399437971033, guid: 11bb982404e0bff478a0eeb4104ed68e, type: 3}
       propertyPath: m_Name
-      value: 'GhostSpawner '
+      value: GhostSpawner
       objectReference: {fileID: 0}
     - target: {fileID: 726198399437971035, guid: 11bb982404e0bff478a0eeb4104ed68e, type: 3}
       propertyPath: m_RootOrder
@@ -43603,7 +43614,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 726198399437971033, guid: 11bb982404e0bff478a0eeb4104ed68e, type: 3}
       propertyPath: m_Name
-      value: 'GhostSpawner '
+      value: GhostSpawner
       objectReference: {fileID: 0}
     - target: {fileID: 726198399437971035, guid: 11bb982404e0bff478a0eeb4104ed68e, type: 3}
       propertyPath: m_RootOrder
@@ -43735,7 +43746,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 726198399437971033, guid: 11bb982404e0bff478a0eeb4104ed68e, type: 3}
       propertyPath: m_Name
-      value: 'GhostSpawner '
+      value: GhostSpawner
       objectReference: {fileID: 0}
     - target: {fileID: 726198399437971035, guid: 11bb982404e0bff478a0eeb4104ed68e, type: 3}
       propertyPath: m_RootOrder
@@ -43871,7 +43882,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 726198399437971033, guid: 11bb982404e0bff478a0eeb4104ed68e, type: 3}
       propertyPath: m_Name
-      value: 'GhostSpawner '
+      value: GhostSpawner
       objectReference: {fileID: 0}
     - target: {fileID: 726198399437971035, guid: 11bb982404e0bff478a0eeb4104ed68e, type: 3}
       propertyPath: m_RootOrder
@@ -44244,6 +44255,61 @@ GameObject:
 --- !u!1 &532399861653221208 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5452564907617814502, guid: b7bd63a16bc76be4d8d7cf3138f3f598, type: 3}
+  m_PrefabInstance: {fileID: 532399861653221204}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &532399861653221209 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7895316415587463700, guid: b7bd63a16bc76be4d8d7cf3138f3f598, type: 3}
+  m_PrefabInstance: {fileID: 532399861653221204}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &532399861653221210 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5205280913812193729, guid: b7bd63a16bc76be4d8d7cf3138f3f598, type: 3}
+  m_PrefabInstance: {fileID: 532399861653221204}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &532399861653221211 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4734369649528358940, guid: b7bd63a16bc76be4d8d7cf3138f3f598, type: 3}
+  m_PrefabInstance: {fileID: 532399861653221204}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &532399861653221212 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7498054070621356279, guid: b7bd63a16bc76be4d8d7cf3138f3f598, type: 3}
+  m_PrefabInstance: {fileID: 532399861653221204}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &532399861653221213 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2830513642164931183, guid: b7bd63a16bc76be4d8d7cf3138f3f598, type: 3}
+  m_PrefabInstance: {fileID: 532399861653221204}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &532399861653221214 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6078122763658554113, guid: b7bd63a16bc76be4d8d7cf3138f3f598, type: 3}
+  m_PrefabInstance: {fileID: 532399861653221204}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &532399861653221215 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6066378848841112060, guid: b7bd63a16bc76be4d8d7cf3138f3f598, type: 3}
+  m_PrefabInstance: {fileID: 532399861653221204}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &532399861653221216 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7133778180350747141, guid: b7bd63a16bc76be4d8d7cf3138f3f598, type: 3}
+  m_PrefabInstance: {fileID: 532399861653221204}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &532399861653221217 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7653640266385723820, guid: b7bd63a16bc76be4d8d7cf3138f3f598, type: 3}
+  m_PrefabInstance: {fileID: 532399861653221204}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &532399861653221218 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7697145705600066434, guid: b7bd63a16bc76be4d8d7cf3138f3f598, type: 3}
+  m_PrefabInstance: {fileID: 532399861653221204}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &532399861653221219 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7347373689878756502, guid: b7bd63a16bc76be4d8d7cf3138f3f598, type: 3}
   m_PrefabInstance: {fileID: 532399861653221204}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3938649347998001828

@@ -561,7 +561,7 @@ Transform:
   - {fileID: 584092596}
   - {fileID: 537072937}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &214767108
 PrefabInstance:
@@ -1272,8 +1272,19 @@ MonoBehaviour:
   rangerText: {fileID: 893352334}
   wizardText: {fileID: 893352333}
   isGameOver: 0
-  keyImages: []
-  potionImages: []
+  keyImages:
+  - {fileID: 492465850}
+  - {fileID: 492465849}
+  - {fileID: 492465848}
+  - {fileID: 492465847}
+  - {fileID: 492465846}
+  - {fileID: 492465845}
+  potionImages:
+  - {fileID: 492465855}
+  - {fileID: 492465854}
+  - {fileID: 492465853}
+  - {fileID: 492465852}
+  - {fileID: 492465851}
 --- !u!4 &464721896
 Transform:
   m_ObjectHideFlags: 0
@@ -1289,6 +1300,61 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &492465845 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7895316415587463700, guid: b7bd63a16bc76be4d8d7cf3138f3f598, type: 3}
+  m_PrefabInstance: {fileID: 893352332}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &492465846 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5205280913812193729, guid: b7bd63a16bc76be4d8d7cf3138f3f598, type: 3}
+  m_PrefabInstance: {fileID: 893352332}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &492465847 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4734369649528358940, guid: b7bd63a16bc76be4d8d7cf3138f3f598, type: 3}
+  m_PrefabInstance: {fileID: 893352332}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &492465848 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7498054070621356279, guid: b7bd63a16bc76be4d8d7cf3138f3f598, type: 3}
+  m_PrefabInstance: {fileID: 893352332}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &492465849 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2830513642164931183, guid: b7bd63a16bc76be4d8d7cf3138f3f598, type: 3}
+  m_PrefabInstance: {fileID: 893352332}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &492465850 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6078122763658554113, guid: b7bd63a16bc76be4d8d7cf3138f3f598, type: 3}
+  m_PrefabInstance: {fileID: 893352332}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &492465851 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6066378848841112060, guid: b7bd63a16bc76be4d8d7cf3138f3f598, type: 3}
+  m_PrefabInstance: {fileID: 893352332}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &492465852 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7133778180350747141, guid: b7bd63a16bc76be4d8d7cf3138f3f598, type: 3}
+  m_PrefabInstance: {fileID: 893352332}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &492465853 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7653640266385723820, guid: b7bd63a16bc76be4d8d7cf3138f3f598, type: 3}
+  m_PrefabInstance: {fileID: 893352332}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &492465854 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7697145705600066434, guid: b7bd63a16bc76be4d8d7cf3138f3f598, type: 3}
+  m_PrefabInstance: {fileID: 893352332}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &492465855 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7347373689878756502, guid: b7bd63a16bc76be4d8d7cf3138f3f598, type: 3}
+  m_PrefabInstance: {fileID: 893352332}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &529642720
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -39912,7 +39978,7 @@ GameObject:
   - component: {fileID: 1727999897}
   - component: {fileID: 1727999896}
   m_Layer: 0
-  m_Name: Audio Source
+  m_Name: LevelMusic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39930,13 +39996,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: af1e1d6455fa68748a3dc95d08180312, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.8
   m_Pitch: 1
   Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 155
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -40027,7 +40093,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1766284491
 PrefabInstance:

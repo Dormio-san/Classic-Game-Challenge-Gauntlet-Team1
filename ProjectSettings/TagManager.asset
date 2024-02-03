@@ -12,8 +12,8 @@ TagManager:
   - Potion
   - Door
   - Wall
-  - Spawner
   - ExitTwo
+  - GhostSpawner
   layers:
   - Default
   - TransparentFX
