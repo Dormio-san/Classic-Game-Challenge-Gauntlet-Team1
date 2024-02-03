@@ -55,8 +55,8 @@ public class PlayerBehavior : MonoBehaviour
     // Each class variables end.*
 
     // Player variables that remain the same no matter the class.
-    private int maxHealth = 2000;
-    private int playerHealth;
+    private static int maxHealth = 2000;
+    public static int playerHealth = maxHealth;
     public static int playerScore = 0;    
     private int playerGradualHealthLoss = 1;
     private float playerAttackCooldown = .7f;
@@ -85,7 +85,6 @@ public class PlayerBehavior : MonoBehaviour
     // Awake function to set the class specific variables to ensure that they are set before anything else occurs. Also, added setting player health to the max here.
     void Awake()
     {
-        playerHealth = maxHealth;
         SetClassSpecificVariables();
     }
     void Start()

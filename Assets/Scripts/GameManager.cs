@@ -62,9 +62,8 @@ public class GameManager : MonoBehaviour
             UnityEditor.EditorApplication.isPlaying = false;
             Application.Quit();
             Debug.Log("Quitting game!");
-        } 
+        }
     }
-
 
     void SpawnPlayer()
     {
@@ -84,7 +83,7 @@ public class GameManager : MonoBehaviour
             CameraBehavior.playerSpawning = true;
         }
     }
-    
+
     /*
       Commented out the Coroutine because we may not use it. If we have a spawn animation, it would be needed. Otherwise, it will be deleted.
     IEnumerator SpawnPlayer()
@@ -113,13 +112,15 @@ public class GameManager : MonoBehaviour
     // Updates the UI for player health.
     public void ChangeHealthText(int currentHealth)
     {
-        playerHealthText.text = "Health: " + currentHealth;
+        playerHealthText.text = "Health\n\n " + currentHealth;
+        playerHealthText.alignment = TextAlignmentOptions.Right;
     }
 
     // Updates the UI for player score.
     public void ChangeScoreText(int currentScore)
     {
-        playerScoreText.text = "Score: " + currentScore;
+        playerScoreText.text = "Score\n\n " + currentScore;
+        playerScoreText.alignment = TextAlignmentOptions.Right;
     }
 
     // Updates the keys UI based on the numberOfKeys the player has.

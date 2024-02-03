@@ -49,19 +49,18 @@ public class SpawnerBehavior : MonoBehaviour
     // Begin the process of spawning enemies by running the correct invoke function.
     void BeginSpawning()
     {
-        // If spawnerType 1 (GhostSpawner) run the SpawnGhosts function a random number between 3.5 and 6.5 seconds after the game starts and do it between 5.5 to 12.5 seconds each time after.
+        // If spawnerType 1 (GhostSpawner) run the SpawnGhosts function a random number between 3.5 and 6.5 seconds after the game starts and do it between 8.5 to 15.5 seconds each time after.
         if (spawnerType == 1)
         {
             levelTwoSprite = ghostSpawnerLevelTwo;
             levelOneSprite = ghostSpawnerLevelOne;
-            InvokeRepeating("SpawnGhosts", Random.Range(3.5f, 6.5f), Random.Range(5.5f, 12.5f));            
+            InvokeRepeating("SpawnGhosts", Random.Range(3.5f, 6.5f), Random.Range(8.5f, 15.5f));            
         }
     }
 
     // Spawn the ghosts for the ghost spawner.
     void SpawnGhosts()
     {
-        Instantiate(enemyGhost, transform.position, Quaternion.identity);
         Instantiate(enemyGhost, transform.position, Quaternion.identity);
     }
 

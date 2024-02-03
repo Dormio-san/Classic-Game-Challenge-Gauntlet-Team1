@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class EndGameScreen : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class EndGameScreen : MonoBehaviour
     public GameObject playerWonUI;
     public GameObject playerLostUI;
     public static Sprite playerCharacter;
+    public TextMeshProUGUI yourScoreTextWin;
+    public TextMeshProUGUI yourScoreTextLose;
 
     void Start()
     {
@@ -36,6 +39,7 @@ public class EndGameScreen : MonoBehaviour
     {
         Image playerCharacterObject = GameObject.Find("PlayerCharacter").GetComponent<Image>();
         playerCharacterObject.sprite = playerCharacter;
+        yourScoreTextWin.text = "Your Score: " + PlayerBehavior.playerScore;
     }
 
     // Function that displays the UI items related to losing the game.
@@ -43,6 +47,7 @@ public class EndGameScreen : MonoBehaviour
     {
         playerWonUI.SetActive(false);
         playerLostUI.SetActive(true);
+        yourScoreTextLose.text = "Your Score: " + PlayerBehavior.playerScore;
     }
 
     void CheckKeyInput()

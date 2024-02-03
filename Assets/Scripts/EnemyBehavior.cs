@@ -14,7 +14,7 @@ public class EnemyBehavior : MonoBehaviour
 
     // Ghost enemy variables.
     private int ghostHealth = 1;
-    private float ghostMoveSpeed = 3.5f;
+    private float ghostMoveSpeed = 2.5f;
     private int damageToGhost = 1;
     
     
@@ -80,11 +80,19 @@ public class EnemyBehavior : MonoBehaviour
     void OnTriggerEnter2D(Collider2D smacked)
     {
         // If enemy hits player, deal damage to the player and deal damage to the enemy.
-        if (smacked.CompareTag("Player"))
+        if (smacked.tag == "Player")
         {
             pB.PlayHitEnemy();
             pB.PlayerHealthChange(damageToPlayer);
             EnemyTakeDamage(damageToEnemy);
+        }
+        else if (smacked.tag == "Wall")
+        {
+            transform.position = new Vector2 (transform.position.x, transform.position.y);
+        }
+        else if (smacked.tag == "Door")
+        {
+            transform.position = new Vector2(transform.position.x, transform.position.y);
         }
     }
 

@@ -26,10 +26,12 @@ public class MainMenu : MonoBehaviour
     public TextMeshProUGUI healthText;
     public TextMeshProUGUI scoreText;
 
-    private void Start()
+    void Start()
     {
-        healthText.text = "Health: " + 2000;
-        scoreText.text = "Score: " + 0;
+        // Run the two functions below at the start.
+        ResetStaticVariables();
+
+        UpdateUI();
     }
 
     void Update()
@@ -100,11 +102,7 @@ public class MainMenu : MonoBehaviour
         // If the attack button is pressed and warrior or valkyrie or ranger or wizard are true, load Level One. 
         // As long as one of the classes has been selected when the player presses the attack button, Level One will load.
         if (Input.GetKeyDown(KeyCode.Space) && (warrior || valkyrie || ranger || wizard))
-        {
-            GameManager.levelTwo = false;
-            EndGameScreen.playerWon = false;
-            EndGameScreen.playerLost = false;
-            PlayerBehavior.playerScore = 0;
+        {            
             SceneManager.LoadSceneAsync("LevelOne");
         }
     }
@@ -119,5 +117,24 @@ public class MainMenu : MonoBehaviour
             mainMenuUI.SetActive(true);
             mainMenu = true;
         }
+    }
+        
+    // Reset all the static variables so they are at their base value when the player restarts the game.
+    void ResetStaticVariables()
+    {
+        GameManager.levelTwo = false;
+        EndGameScreen.playerWon = false;
+        EndGameScreen.playerLost = false;
+        PlayerBehavior.playerScore = 0;
+        PlayerBehavior.playerHealth = 2000;
+    }
+
+    // Update the UI so it displays the correct values.
+    void UpdateUI()
+    {
+        healthText.text = "Health\n\n" + PlayerBehavior.playerHealth;
+        healthText.alignment = TextAlignmentOptions.Right;
+        scoreText.text = "Score\n\n" + PlayerBehavior.playerScore;
+        scoreText.alignment = TextAlignmentOptions.Right;
     }
 }
