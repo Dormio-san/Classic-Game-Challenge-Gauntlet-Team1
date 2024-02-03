@@ -52,6 +52,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1615731423282692053}
     - target: {fileID: 3895951163467173553, guid: 6fff2c15ae317e44e866767eb8c37669, type: 3}
+      propertyPath: valkyrieSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1d36fb5b1ce61764180c3b8ba07bc31d, type: 3}
+    - target: {fileID: 3895951163467173553, guid: 6fff2c15ae317e44e866767eb8c37669, type: 3}
       propertyPath: valkyrieWeapon
       value: 
       objectReference: {fileID: 4675483756662341345, guid: 4fc9daf0c3a7357438485b86f6f1fcd1, type: 3}

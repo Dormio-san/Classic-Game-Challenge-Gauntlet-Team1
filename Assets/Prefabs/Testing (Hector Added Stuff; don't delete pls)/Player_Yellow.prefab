@@ -52,6 +52,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2138654675879047372}
     - target: {fileID: 3895951163467173553, guid: 6fff2c15ae317e44e866767eb8c37669, type: 3}
+      propertyPath: wizardSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3ae54711d8f70d34984e14e2a8c459a6, type: 3}
+    - target: {fileID: 3895951163467173553, guid: 6fff2c15ae317e44e866767eb8c37669, type: 3}
       propertyPath: wizardWeapon
       value: 
       objectReference: {fileID: 6815056409529450215, guid: 559f007cfeac0314c8fbe2735ed6b9d6, type: 3}
