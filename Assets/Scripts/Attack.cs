@@ -5,7 +5,7 @@ using UnityEngine;
 // Make sure this script is assigned to each of the player weapons (the arrow weapon used for each class).
 public class Attack : MonoBehaviour
 {
-    public GameObject explosionAnimation; // This needs to be assigned in the inspector of the player weapon. If we don't do an explosion animation, please inform me so I can change the script.
+    //public GameObject explosionAnimation; // This needs to be assigned in the inspector of the player weapon. (Not doing).
     private PlayerBehavior pB; // This is a reference to the player behavior script which is used in different parts of the script.
     private int enemyHitScore = 10; // This is the amount of score the player is given when they hit an enemy.
     private int damageDealt = 1; // This is the amount of damage the player's weapon deals to enemies.
@@ -21,8 +21,9 @@ public class Attack : MonoBehaviour
     {
         if (hit.CompareTag("Enemy"))
         {
-            // If the arrow hits an enemy, play the explosion animation, deal damage to the enemy, change the player's score, and destroy the arrow.
-            Instantiate(explosionAnimation, transform.position, Quaternion.identity);
+            // If the arrow hits an enemy, play the explosion animation (not doing), deal damage to the enemy, change the player's score, and destroy the arrow.
+            pB.PlayHitEnemy();
+            //Instantiate(explosionAnimation, transform.position, Quaternion.identity);
             hit.GetComponent<EnemyBehavior>().EnemyTakeDamage(damageDealt);
             pB.PlayerScoreChange(enemyHitScore);          
             Destroy(this.gameObject);
@@ -35,6 +36,7 @@ public class Attack : MonoBehaviour
         else if (hit.CompareTag("Spawner"))
         {
             // If the arrow hits the spawner, give the player score, run the TookDamage function in the spawner script, and destroy the arrow.
+            pB.PlayHitEnemy();
             hit.GetComponent<SpawnerBehavior>().TookDamage(damageDealt);
             pB.PlayerScoreChange(enemyHitScore);
             Destroy(this.gameObject);

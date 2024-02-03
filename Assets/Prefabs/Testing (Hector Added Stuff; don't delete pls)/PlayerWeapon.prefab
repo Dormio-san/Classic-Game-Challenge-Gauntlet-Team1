@@ -147,7 +147,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ed8e1b98df33174983eea55b7233ac0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionAnimation: {fileID: 3083595911898407074, guid: 3881763bf0cd7b948895dde94ae5d1c3, type: 3}
 --- !u!96 &9208837908528155530
 TrailRenderer:
   serializedVersion: 2

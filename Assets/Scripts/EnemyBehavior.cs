@@ -82,6 +82,7 @@ public class EnemyBehavior : MonoBehaviour
         // If enemy hits player, deal damage to the player and deal damage to the enemy.
         if (smacked.CompareTag("Player"))
         {
+            pB.PlayHitEnemy();
             pB.PlayerHealthChange(damageToPlayer);
             EnemyTakeDamage(damageToEnemy);
         }
