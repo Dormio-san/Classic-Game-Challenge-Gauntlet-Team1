@@ -190,6 +190,14 @@ PrefabInstance:
       propertyPath: m_BodyType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4668545308904241718, guid: d19f8ef17c6fd454ba2e4701bd80ac0b, type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4668545308904241718, guid: d19f8ef17c6fd454ba2e4701bd80ac0b, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d19f8ef17c6fd454ba2e4701bd80ac0b, type: 3}
 --- !u!4 &25869283 stripped
@@ -35041,6 +35049,14 @@ PrefabInstance:
       propertyPath: m_BodyType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5266245858130463026, guid: 019515ac69ecc27438a8c20fc6bde673, type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5266245858130463026, guid: 019515ac69ecc27438a8c20fc6bde673, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6195479163284844149, guid: 019515ac69ecc27438a8c20fc6bde673, type: 3}
       propertyPath: m_Name
       value: chain_tiles_1
@@ -35176,6 +35192,10 @@ PrefabInstance:
     - target: {fileID: 2255437552992288758, guid: 27c22665cb449b845bff8f508f735189, type: 3}
       propertyPath: m_Name
       value: Exit (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2255437552992288758, guid: 27c22665cb449b845bff8f508f735189, type: 3}
+      propertyPath: m_TagString
+      value: ExitTwo
       objectReference: {fileID: 0}
     - target: {fileID: 3759868728293674131, guid: 27c22665cb449b845bff8f508f735189, type: 3}
       propertyPath: m_RootOrder
@@ -38829,6 +38849,14 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -5518002384538603403, guid: 66fcde704ab3bd343a37748b9a67522a, type: 3}
       propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5518002384538603403, guid: 66fcde704ab3bd343a37748b9a67522a, type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5518002384538603403, guid: 66fcde704ab3bd343a37748b9a67522a, type: 3}
+      propertyPath: m_CollisionDetection
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3737089614298360067, guid: 66fcde704ab3bd343a37748b9a67522a, type: 3}

@@ -6,7 +6,6 @@ public class PlayerBehavior : MonoBehaviour
 {
     // Script references.
     private GameManager gM;
-    private SpawnerBehavior sB;
 
     // Bools to say what class the player chose on the main menu.
     private bool warriorClass;
@@ -56,7 +55,8 @@ public class PlayerBehavior : MonoBehaviour
     // Each class variables end.*
 
     // Player variables that remain the same no matter the class.
-    private int playerHealth = 2000;
+    private int maxHealth = 2000;
+    private int playerHealth;
     public static int playerScore = 0;    
     private int playerGradualHealthLoss = 1;
     private float playerAttackCooldown = .7f;
@@ -79,16 +79,16 @@ public class PlayerBehavior : MonoBehaviour
     private Camera playerCamera; // Assigned in script, so don't need to do it in the inspector.
     public LayerMask enemyLayer; // !! Make sure to assign in the inspector!!
 
-    // Awake function to set the class specific variables to ensure that they are set before anything else occurs.
+    // Awake function to set the class specific variables to ensure that they are set before anything else occurs. Also, added setting player health to the max here.
     void Awake()
     {
+        playerHealth = maxHealth;
         SetClassSpecificVariables();
     }
     void Start()
     {
         // Assign script references.
         gM = GameObject.Find("GameManager").GetComponent<GameManager>(); // Assign reference to game manager script.
-        //sB = GameObject.FindWithTag("Spawner").GetComponent<SpawnerBehavior>(); // Assign reference to spawner behavior script.
 
         InvokeRepeating("GradualHealthDepletion", 1f, 1f); // One second after spawning, begin losing 1 health every second.
 
@@ -204,17 +204,6 @@ public class PlayerBehavior : MonoBehaviour
                 PlayerScoreChange(chestScore); // Give player score.
                 Destroy(other.gameObject); // Destroy chest.
                 break;
-            case "Healing":
-                // Healing item collided with.
-                // Give the player health and check to make sure it doesn't go over 2000. Also, update UI and destroy the item.
-                PlayerHealthChange(healthPlayerGains);
-                if (playerHealth >= 2000)
-                {
-                    playerHealth = 2000;
-                }
-                HealthUIChange();
-                Destroy(other.gameObject);
-                break;
             case "Key":
                 // Key collided with.
                 // Give player a key, update the UI, and destroy the item.
@@ -242,13 +231,13 @@ public class PlayerBehavior : MonoBehaviour
                     Destroy(other.gameObject);
                 }
                 break;
-            //case "Spawner":
-            //    // If the player can walk into something and damge it, deal damage to the spawner.
-            //    if (walkIntoDamage)
-            //    {
-            //        sB.TookDamage(walkIntoDamageValue);
-            //    }
-            //    break;
+            case "Spawner":
+                // If the player can walk into something and damge it, deal damage to the spawner.
+                if (walkIntoDamage)
+                {
+                    other.GetComponent<SpawnerBehavior>().TookDamage(walkIntoDamageValue);
+                }
+                break;
         }
     }
 
@@ -493,9 +482,18 @@ public class PlayerBehavior : MonoBehaviour
                 PlayerScoreChange(enemyDeadScore);
             }
 
-            // Once the above items are completed, subtract a potion from the player and update the potion UI.
+            // Once the above items are completed, subtract a potion from the player and update the potion UI. Also, give the player health and update the UI.
             potionInPossession--;
             gM.ChangePotionUI(potionInPossession);
+
+            //When adding to the player's health, make sure it doesn't go over the maxHealth(2000).
+            playerHealth += healthPlayerGains;
+            if (playerHealth >= maxHealth)
+            {
+                playerHealth = maxHealth;
+            }
+            HealthUIChange();
+
             Debug.Log("Potion used. Remaining potions: " + potionInPossession);
         }
         else

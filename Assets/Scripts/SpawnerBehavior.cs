@@ -7,12 +7,12 @@ public class SpawnerBehavior : MonoBehaviour
     private int spawnerType; // Int that classifies different spawners as different types so that different enemies spawn.
     private GameManager gM; // Variable that references the GameManager script (assigned below).
     public GameObject enemyGhost; // The enemy ghost object that spawns.
-    private int spawnerHealth = 3; // Int that gives the spawner health.
+    public int spawnerHealth = 3; // Int that gives the spawner health.
     private SpriteRenderer spriteRenderer; // Used to get the sprite renderer component of the spawner.
 
     // The different sprites for the spawner that are used when it takes damage.
-    private Sprite levelTwoSprite;
-    private Sprite levelOneSprite;
+    private static Sprite levelTwoSprite;
+    private static Sprite levelOneSprite;
 
     // Sprites for ghost spawner.
     public Sprite ghostSpawnerLevelTwo;
@@ -52,9 +52,9 @@ public class SpawnerBehavior : MonoBehaviour
         // If spawnerType 1 (GhostSpawner) run the SpawnGhosts function 5 seconds after the game starts and every 3.5 seconds after.
         if (spawnerType == 1)
         {
-            InvokeRepeating("SpawnGhosts", 5.0f, 3.5f);
             levelTwoSprite = ghostSpawnerLevelTwo;
             levelOneSprite = ghostSpawnerLevelOne;
+            InvokeRepeating("SpawnGhosts", 5.0f, 3.5f);            
         }
     }
 
