@@ -59,7 +59,7 @@ public class PlayerBehavior : MonoBehaviour
     public static int playerHealth = maxHealth;
     public static int playerScore = 0;    
     private int playerGradualHealthLoss = 1;
-    private float playerAttackCooldown = .7f;
+    private float playerAttackCooldown = 1.1f;
     private float lastAttackTime;
     private int enemyDeadScore = 10;
     public AudioSource pickupSound;
@@ -111,7 +111,7 @@ public class PlayerBehavior : MonoBehaviour
         PlayerMovement();       
 
         // If the player presses space and they can attack, the SpawnPlayerWeapon function runs.
-        if (Input.GetKey(KeyCode.Space) && CanAttack())
+        if (Input.GetKey(KeyCode.Space))
         {
             SpawnPlayerWeapon();
         }  
@@ -129,7 +129,7 @@ public class PlayerBehavior : MonoBehaviour
             CancelInvoke();
         }
 
-        Debugging(); // Debugging is stored in one function and run here to avoid clutter.
+        //Debugging(); // Debugging is stored in one function and run here to avoid clutter. Commented out at end because no cheats for you!
     }
 
     // Depending on which class the player chose, the values for some variables differ.
@@ -275,6 +275,12 @@ public class PlayerBehavior : MonoBehaviour
 
     void SpawnPlayerWeapon()
     {
+        // Check to see if enough time has passed since the last weapon spawn to spawn another.
+        if (Time.time - lastAttackTime < playerAttackCooldown)
+        {
+            return; // Not enough time has passed, so exit the function.
+        }
+
         // Spawn the attack at the player's position and give it a variable name.
         GameObject playerAttack = Instantiate(playerWeapon, playerTransform.position, Quaternion.identity);
         // Get the rigidbody of the player's attack.
@@ -291,12 +297,18 @@ public class PlayerBehavior : MonoBehaviour
             float angle = Mathf.Atan2(lastFacingDirection.x, -lastFacingDirection.y) * Mathf.Rad2Deg;
             playerAttack.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
-        else
-        {
-            Debug.LogWarning("Rigidbody2D not found on player attack."); // Debug here in case issue occurs.
-        }
+        //else
+        //{
+        //    Debug.LogWarning("Rigidbody2D not found on player attack."); // Debug here in case issue occurs.
+        //}
 
         lastAttackTime = Time.time; // Begin attack cooldown.       
+    }
+
+    // Function is called when the weapon is destroyed. This then rests the cooldown timer, allowing the player to attack again.
+    public void WeaponDestroyed()
+    {
+        lastAttackTime = Time.time - playerAttackCooldown;
     }
 
     // Does as the name suggests by subtracting the depletion from the player's health. This is repeated every second and is mentioned in the start function. Also, updates UI.
@@ -331,14 +343,6 @@ public class PlayerBehavior : MonoBehaviour
     {
         gM.ChangeHealthText(playerHealth);
     }
-    
-    // Bool function that figures out if the lastAttackTime is less than or greater than the player attack cooldown.
-    // If less, player can't attack. If greater, CanAttack is true and the player can attack again.
-    bool CanAttack()
-    {
-        return Time.time - lastAttackTime >= playerAttackCooldown;
-    }
-
 
     // Updates the sprite animation based on the direction the player is moving in.
     void UpdateSpriteAnimation()

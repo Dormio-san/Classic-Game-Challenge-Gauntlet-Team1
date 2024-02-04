@@ -22,23 +22,29 @@ public class Attack : MonoBehaviour
         if (hit.CompareTag("Enemy"))
         {
             // If the arrow hits an enemy, play the explosion animation (not doing), deal damage to the enemy, change the player's score, and destroy the arrow.
+            // Right before destroying, call player weapon destroyed function to allow the player to attack again.
             pB.PlayAttackHit();
             //Instantiate(explosionAnimation, transform.position, Quaternion.identity);
             hit.GetComponent<EnemyBehavior>().EnemyTakeDamage(damageDealt);
-            pB.PlayerScoreChange(enemyHitScore);          
+            pB.PlayerScoreChange(enemyHitScore);
+            pB.WeaponDestroyed();
             Destroy(this.gameObject);
         }
         else if (hit.CompareTag("Wall") || hit.CompareTag("Door"))
         {
-            // If the arrow hits a wall or door, destroy the arrow when it collides.
+            // If the arrow hits a wall or door, destroy the arrow when it collides. 
+            // Right before destroying, call player weapon destroyed function to allow the player to attack again.
+            pB.WeaponDestroyed();
             Destroy(this.gameObject);
         }
         else if (hit.CompareTag("GhostSpawner"))
         {
             // If the arrow hits the spawner, give the player score, run the TookDamage function in the spawner script, and destroy the arrow.
+            // Right before destroying, call player weapon destroyed function to allow the player to attack again.
             pB.PlayAttackHit();
             hit.GetComponent<SpawnerBehavior>().TookDamage(damageDealt);
             pB.PlayerScoreChange(enemyHitScore);
+            pB.WeaponDestroyed();
             Destroy(this.gameObject);
         }
     }

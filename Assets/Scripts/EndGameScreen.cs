@@ -62,9 +62,9 @@ public class EndGameScreen : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             // The Unity Editor line allows for testing in the non built version as it exits play mode in the editor.
-            UnityEditor.EditorApplication.isPlaying = false;
+            //UnityEditor.EditorApplication.isPlaying = false;
             Application.Quit();
-            Debug.Log("Quitting game!");
+            //Debug.Log("Quitting game!");
         }
     }
 }

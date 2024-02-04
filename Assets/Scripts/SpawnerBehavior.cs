@@ -22,7 +22,7 @@ public class SpawnerBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Spawner health: " + spawnerHealth); // Used for testing, but will be commented out at end.
+        //Debug.Log("Spawner health: " + spawnerHealth); // Used for testing, but will be commented out at end.
 
         // Assign game manager script reference and sprite renderer reference.
         gM = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -73,16 +73,16 @@ public class SpawnerBehavior : MonoBehaviour
         if (spawnerHealth == 2)
         {
             spriteRenderer.sprite = levelTwoSprite;
-            Debug.Log("Spawner health: " + spawnerHealth);
+            //Debug.Log("Spawner health: " + spawnerHealth);
         }
         else if (spawnerHealth == 1)
         {
             spriteRenderer.sprite = levelOneSprite;
-            Debug.Log("Spawner health: " + spawnerHealth);
+            //Debug.Log("Spawner health: " + spawnerHealth);
         }
         else if (spawnerHealth == 0)
         {
-            Debug.Log("Spawner health: " + spawnerHealth + " object destroyed.");
+            //Debug.Log("Spawner health: " + spawnerHealth + " object destroyed.");
             Destroy(this.gameObject);
         }
     }
