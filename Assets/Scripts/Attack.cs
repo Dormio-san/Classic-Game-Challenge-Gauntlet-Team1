@@ -22,7 +22,7 @@ public class Attack : MonoBehaviour
         if (hit.CompareTag("Enemy"))
         {
             // If the arrow hits an enemy, play the explosion animation (not doing), deal damage to the enemy, change the player's score, and destroy the arrow.
-            pB.PlayHitEnemy();
+            pB.PlayAttackHit();
             //Instantiate(explosionAnimation, transform.position, Quaternion.identity);
             hit.GetComponent<EnemyBehavior>().EnemyTakeDamage(damageDealt);
             pB.PlayerScoreChange(enemyHitScore);          
@@ -36,7 +36,7 @@ public class Attack : MonoBehaviour
         else if (hit.CompareTag("GhostSpawner"))
         {
             // If the arrow hits the spawner, give the player score, run the TookDamage function in the spawner script, and destroy the arrow.
-            pB.PlayHitEnemy();
+            pB.PlayAttackHit();
             hit.GetComponent<SpawnerBehavior>().TookDamage(damageDealt);
             pB.PlayerScoreChange(enemyHitScore);
             Destroy(this.gameObject);

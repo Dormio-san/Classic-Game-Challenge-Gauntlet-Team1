@@ -65,6 +65,7 @@ public class PlayerBehavior : MonoBehaviour
     public AudioSource pickupSound;
     public AudioSource hitEnemy;
     public AudioSource usePotion;
+    public AudioSource attackHit;
 
     // Item related variables for key, potion, healing item, and chest.
     private int keyInPossession = 0;
@@ -240,7 +241,7 @@ public class PlayerBehavior : MonoBehaviour
                 // If the player can walk into something and damge it, deal damage to the spawner and play sound.
                 if (walkIntoDamage)
                 {
-                    PlayHitEnemy();
+                    PlayAttackHit();
                     other.GetComponent<SpawnerBehavior>().TookDamage(damagePlayerDeals);
                 }
                 break;
@@ -522,5 +523,10 @@ public class PlayerBehavior : MonoBehaviour
     public void PlayHitEnemy()
     {
         hitEnemy.Play();
+    }
+
+    public void PlayAttackHit()
+    {
+        attackHit.Play();
     }
 }
